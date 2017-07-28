@@ -11,7 +11,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.contract.Broad
  * Created by INS7566 on 2017/7/28.
  */
 
-public class BroadCastPresenter implements BroadCastContract.Presenter{
+public class BroadCastPresenter implements BroadCastContract.Presenter {
     private IBroadCast bobaoModel;
     private BroadCastContract.View BobaoView;
 
