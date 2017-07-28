@@ -1,5 +1,6 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import butterknife.OnClick;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment.HomeFragment;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.hudong.HudongActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ConfigFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ToastManger;
@@ -71,21 +73,21 @@ public class MainActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_home_btn:
-                showTitle(null,HOMETYPE);
+                showTitle(null, HOMETYPE);
                 ConfigFragment.getInstance().init().start(HomeFragment.class).build();
                 break;
             case R.id.main_live_btn:
-                showTitle("熊猫直播",0);
+                showTitle("熊猫直播", 0);
                 break;
             case R.id.main_culture_btn:
-                showTitle("熊猫文化",0);
+                showTitle("熊猫文化", 0);
                 break;
             case R.id.main_broadcast_btn:
-                showTitle("熊猫观察",0);
+                showTitle("熊猫观察", 0);
                 ConfigFragment.getInstance().init().start(PandaBroadcastFragment.class).build();
                 break;
             case R.id.main_china_btn:
-                showTitle("直播中国",0);
+                showTitle("直播中国", 0);
                 break;
         }
     }
@@ -118,6 +120,20 @@ public class MainActivity extends BaseActivity {
         } else {
             ToastManger.show("再按一次退出应用");
             lastTime = System.currentTimeMillis();
+        }
+    }
+
+    @OnClick({R.id.personImg, R.id.hudongImg})
+    public void onClicked(View view) {
+        switch (view.getId()) {
+            case R.id.personImg:
+
+                break;
+            case R.id.hudongImg:
+                Intent intent = new Intent(MainActivity.this,HudongActivity.class);
+                startActivity(intent);
+
+                break;
         }
     }
 }
