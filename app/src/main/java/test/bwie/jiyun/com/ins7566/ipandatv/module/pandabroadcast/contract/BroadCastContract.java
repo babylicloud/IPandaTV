@@ -11,7 +11,6 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.PandaBroa
 
 public interface BroadCastContract {
     interface View extends BaseView<Presenter> {
-
         void setResult(PandaBroadBean pandaLiveBean);
         void setResultHeadler(BroadHeaderBean broadHeaderBean);
         void showMessage(String msg);

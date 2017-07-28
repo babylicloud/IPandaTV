@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment.HomeFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ConfigFragment;
 
@@ -45,7 +46,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
     }
 
     @Override
