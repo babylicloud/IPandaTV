@@ -19,6 +19,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ConfigFragment;
+import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ToastManger;
 
 public class MainActivity extends BaseActivity {
 
@@ -48,20 +49,20 @@ public class MainActivity extends BaseActivity {
     ImageView hudongImg;
     private long lastTime;//上一次点击back键的时间毫秒数
     public static final int HOMETYPE = 1;
-    private FragmentManager fragmentManager;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
 
-        @Override
-        protected void initView() {
+    @Override
+    protected void initView() {
 
     }
 
     @Override
     public void initData() {
-
+        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
     }
 
     @Override
@@ -74,7 +75,7 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.main_home_btn:
                 showTitle(null,HOMETYPE);
-
+                ConfigFragment.getInstance().init().start(HomeFragment.class).build();
                 break;
             case R.id.main_live_btn:
                 showTitle("熊猫直播",0);
