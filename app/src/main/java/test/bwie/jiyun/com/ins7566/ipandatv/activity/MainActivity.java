@@ -17,9 +17,9 @@ import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment.HomeFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ConfigFragment;
-import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ToastManger;
 
 public class MainActivity extends BaseActivity {
 
@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity {
     ImageView hudongImg;
     private long lastTime;//上一次点击back键的时间毫秒数
     public static final int HOMETYPE = 1;
-
+private  FragmentManager fragmentManager;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
