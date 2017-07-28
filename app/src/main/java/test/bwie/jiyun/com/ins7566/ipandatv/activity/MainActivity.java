@@ -14,6 +14,8 @@ import butterknife.OnClick;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.fragment.PandaCultureFragment;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.fragment.PandaLiveFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ConfigFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.ToastManger;
 
@@ -75,9 +77,11 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.main_live_btn:
                 showTitle("熊猫直播",0);
+                ConfigFragment.getInstance().init().start(PandaLiveFragment.class).build();
                 break;
             case R.id.main_culture_btn:
                 showTitle("熊猫文化",0);
+                ConfigFragment.getInstance().init().start(PandaCultureFragment.class).build();
                 break;
             case R.id.main_broadcast_btn:
                 showTitle("熊猫观察",0);

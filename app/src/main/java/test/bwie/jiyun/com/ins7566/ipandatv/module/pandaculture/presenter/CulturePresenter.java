@@ -5,6 +5,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.model.culturemodel.Cultureimp;
 import test.bwie.jiyun.com.ins7566.ipandatv.model.culturemodel.ICulturemodle;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaCultureBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.contract.CultureContract;
+import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.MyLog;
 
 /**
  * Created by lx on 2017/7/28.
@@ -31,6 +32,7 @@ public class CulturePresenter implements CultureContract.Presenter {
             @Override
             public void OnSuccess(PandaCultureBean pandaCultureBean) {
                 CultureView.ShowAll(pandaCultureBean);
+                MyLog.e("TAG", pandaCultureBean + "");
             }
 
             @Override
