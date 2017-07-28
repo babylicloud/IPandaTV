@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">IPandaTV</string>
+    <string name="hello">Hello World, JPush!</string>
+
+    <string name="tag_hint">Tag为大小写字母，数字，下划线,中文， 多个用以逗号分隔</string>
+    <string name="alias_hint">Alias为大小写字母，数字，下划线</string>
+    <string name="style_hint">style为数字</string>
+    <string name="error_style_empty">style不能为空</string>
+    <string name="error_alias_empty">alias不能为空</string>
+    <string name="error_tag_empty">tag不能为空</string>
+    <string name="error_tag_gs_empty">格式不对</string>
+    <string name="error_network">网络连接异常,初始化失败 请检查网络！</string>
+    <string name="logining">程序在后台执行, 请查看日志！</string>
+    <string name="setting_su">设置成功</string>
+    <string name="one">1.观看熊猫频道视频对手机网络有什么要求</string>
+    <string name="two">建议您在有WIFI的情况下观看视频，不建议您在2G网络下观看视频熊猫频道可以对您的联网类型进行自动识别，当您在3G、4G情况下观看视频时，手机会自动提示您在使用数据流量环境下观看视频，可能产生高额费用，是否继续观看</string>
+    <string name="three">2.如何清除缓存</string>
+    <string name="four">在"个人中心"页面里点击"设置"，在设置页面里选择"清楚缓存"</string>
+    <string name="five">3.如何进行版本更新</string>
+    <string name="six">新版本更新以后，用户首次启动客户端，会自动接收到升级提示。点击"升级"即可。IOS用户手机自动跳转至AppStore下载页面，Android用户手机自动后台下载更新</string>
+    <string name="senven">4.启动或使用时闪退该怎么办</string>
+    <string name="eight">登录或使用熊猫频道时出现闪退，可能是手机运行空间不足或软件数据包对视导致，请您尝试重启手机或卸载软件后，下载安装最新版本使用</string>
+    <string name="nine">5.我有问题，如何反馈</string>
+    <string name="ten">在"个人中心"页面里点击"设置"，在设置页面里选择"用户反馈及帮助"。根据页面提示提交反馈，我们收到后将即时处理</string>
+
+
+</resources>

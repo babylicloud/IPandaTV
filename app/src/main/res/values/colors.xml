@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#EDEDED</color>
+    <color name="colorGrayBlack">#535353</color>
+    <color name="live_china_grak">#656565</color>
+    <color name="pe_text_bg_gray">#5d5d5d</color>
+    <color name="pe_bg_light_blue">#E6EBEF</color>
+    <color name="pe_gray">#808080</color>
+    <color name="black">#353535</color>
+    <color name="transparent">#00000000</color> <!-- 透明 -->
+</resources>
