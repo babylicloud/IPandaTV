@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment.HomeFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.fragment.PandaCultureFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.fragment.PandaLiveFragment;
@@ -60,7 +61,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
     }
 
     @Override
@@ -73,7 +74,7 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.main_home_btn:
                 showTitle(null,HOMETYPE);
-
+                ConfigFragment.getInstance().init().start(HomeFragment.class).build();
                 break;
             case R.id.main_live_btn:
                 showTitle("熊猫直播",0);
