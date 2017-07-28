@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidkun.PullToRefreshRecyclerView;
+import com.androidkun.callback.PullToRefreshListener;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.HomeViewPagerAda
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.Home_Adapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.setViewPagerListener;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.HomePageBean;
+import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 /**
  * Created by INS7566 on 2017/7/28.
@@ -53,13 +55,39 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
     protected void init(View view) {
     PulltoRefresh = (PullToRefreshRecyclerView) view.findViewById(R.id.PulltoRefresh);
         view1 = LayoutInflater.from(getContext()).inflate(R.layout.home_viewpager_main,null);
-     linearLayout = (LinearLayout) view1.findViewById(R.id.home_viewpager_linearLayout);
-     mViewPager = (ViewPager) view1.findViewById(R.id.home_viewpager);
+        linearLayout = (LinearLayout) view1.findViewById(R.id.home_viewpager_linearLayout);
+        mViewPager = (ViewPager) view1.findViewById(R.id.home_viewpager);
         mViewPager.setOnPageChangeListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(App.activity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         PulltoRefresh.setLayoutManager(linearLayoutManager);
         PulltoRefresh.addHeaderView(view1);
+        PulltoRefresh.setPullRefreshEnabled(true);
+        PulltoRefresh.setPullToRefreshListener(new PullToRefreshListener() {
+            @Override
+            public void onRefresh() {
+                PulltoRefresh.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        PulltoRefresh.setRefreshComplete();
+//                        mList.clear();
+
+//                        presenter.start();
+                    }
+                },200);
+            }
+
+            @Override
+            public void onLoadMore() {
+                PulltoRefresh.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        PulltoRefresh.setLoadMoreComplete();
+//                        presenter.start();
+                    }
+                },200);
+            }
+        });
         mViewPager.setFocusable(true);
         mViewPager.setFocusableInTouchMode(true);
         mViewPager.requestFocus();
@@ -83,6 +111,83 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
 
 
 
+
+
+
+    @Override
+    public void setImage(HomePageBean homePageBean) {
+
+        List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = homePageBean.getData().getBigImg();
+        showLunBo(bigImgBeanList);
+
+        mList = new ArrayList<>();
+        HomePageBean.DataBean data = homePageBean.getData();
+        mList.add(data.getPandaeye());
+        mList.add(data.getArea());
+        mList.add(data.getChinalive());
+        mList.add(data.getWalllive());
+        mList.add(data.getPandalive());
+        homeAdapter = new Home_Adapter(App.activity, mList);
+        PulltoRefresh.setAdapter(homeAdapter);
+        homeAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void setMsg(String msg) {
+
+    }
+
+    @Override
+    public void setPresenter(HomeContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void dismissProgress() {
+
+    }
+
+    @Override
+    public void showAcache() {
+
+        ACache aCache = ACache.get(getContext());
+        HomePageBean asObject = (HomePageBean) aCache.getAsObject("HomePageBean");
+        List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = asObject.getData().getBigImg();
+        showLunBo(bigImgBeanList);
+
+        mList = new ArrayList<>();
+        HomePageBean.DataBean data = asObject.getData();
+        mList.add(data.getPandaeye());
+        mList.add(data.getArea());
+        mList.add(data.getChinalive());
+        mList.add(data.getWalllive());
+        mList.add(data.getPandalive());
+        homeAdapter = new Home_Adapter(App.activity, mList);
+        PulltoRefresh.setAdapter(homeAdapter);
+        homeAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 
     //轮播图
     private void showLunBo(final List<HomePageBean.DataBean.BigImgBean> bigImgBeen) {
@@ -154,51 +259,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
         }
     };
 
-    @Override
-    public void setImage(HomePageBean homePageBean) {
 
-        List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = homePageBean.getData().getBigImg();
-        showLunBo(bigImgBeanList);
 
-    }
 
-    @Override
-    public void setMsg(String msg) {
-
-    }
-
-    @Override
-    public void setPresenter(HomeContract.Presenter presenter) {
-        this.presenter = presenter;
-    }
-
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void dismissProgress() {
-
-    }
-
-    @Override
-    public void showAcache() {
-
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
 }

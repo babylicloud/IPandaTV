@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.main_home_btn:
                 showTitle(null,HOMETYPE);
-
+                ConfigFragment.getInstance().init().start(HomeFragment.class).build();
                 break;
             case R.id.main_live_btn:
                 showTitle("熊猫直播",0);
