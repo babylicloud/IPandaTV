@@ -161,6 +161,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
         List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = asObject.getData().getBigImg();
         showLunBo(bigImgBeanList);
 
+
         mList = new ArrayList<>();
         HomePageBean.DataBean data = asObject.getData();
         mList.add(data.getPandaeye());
