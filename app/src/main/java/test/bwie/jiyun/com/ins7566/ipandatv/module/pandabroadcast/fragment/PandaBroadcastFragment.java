@@ -17,7 +17,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
@@ -37,8 +36,7 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
     @BindView(R.id.bobao_RecyclerView)
     PullToRefreshRecyclerView mRecyclerView;
     Unbinder unbinder;
-    @BindView(R.id.Personal_Cente)
-    ImageView PersonalCente;
+
     private ImageView mImage;
     private TextView title;
     private View view1;
@@ -135,13 +133,6 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
         super.onDestroyView();
         unbinder.unbind();
     }
-
-    @OnClick(R.id.Personal_Cente)
-    public void onViewClicked() {
-
-    }
-
-
 
     @Override
     public void setResult(PandaBroadBean pandaLiveBean) {
