@@ -17,7 +17,7 @@ public class ConfigFragment {
     private Boolean isbask;
     private String simpleName;
 
-    /*
+    /**
     单例模式,懒汉式
      */
     private ConfigFragment() {
@@ -63,7 +63,7 @@ public class ConfigFragment {
         }
         //隐藏上一个Fragment
 
-        if (App.lastFragment != null) {
+        if (App.lastFragment != null&& isbask) {
             transaction.hide(App.lastFragment);
         }
         //显示Fragment

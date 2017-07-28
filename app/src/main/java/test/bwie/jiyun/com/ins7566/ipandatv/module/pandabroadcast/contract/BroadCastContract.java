@@ -13,8 +13,8 @@ public interface BroadCastContract {
     interface View extends BaseView<Presenter> {
         void setResult(PandaBroadBean pandaLiveBean);
         void setResultHeadler(BroadHeaderBean broadHeaderBean);
-        void showMessage(String msg);
-        void ShowMessageTwo(String msg);
+//        void showMessage(String msg);
+//        void ShowMessageTwo(String msg);
 
     }
 

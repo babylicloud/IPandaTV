@@ -6,6 +6,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.model.IBroadCast;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.BroadHeaderBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.PandaBroadBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.contract.BroadCastContract;
+import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.MyLog;
 
 /**
  * Created by INS7566 on 2017/7/28.
@@ -33,7 +34,6 @@ public class BroadCastPresenter implements BroadCastContract.Presenter{
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
 
-                BobaoView.showMessage(ErrorMsg);
                 BobaoView.showAcache();
             }
         });
@@ -42,11 +42,12 @@ public class BroadCastPresenter implements BroadCastContract.Presenter{
             @Override
             public void OnSuccess(BroadHeaderBean broadHeaderBean) {
                 BobaoView.setResultHeadler(broadHeaderBean);
+                MyLog.e("aaa",broadHeaderBean.getData().getBigImg().toString());
             }
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-                BobaoView.ShowMessageTwo(ErrorMsg);
+
             }
         });
     }
