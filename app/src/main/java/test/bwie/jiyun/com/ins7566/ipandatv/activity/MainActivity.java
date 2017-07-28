@@ -90,6 +90,7 @@ private  FragmentManager fragmentManager;
             case R.id.main_china_btn:
                 showTitle("直播中国",0);
                 break;
+
         }
     }
 
