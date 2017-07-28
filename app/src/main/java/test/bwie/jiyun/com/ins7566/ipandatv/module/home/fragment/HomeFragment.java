@@ -176,6 +176,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
     }
 
     @Override
+    public void showErrorMsg() {
+
+    }
+
+    @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
     }

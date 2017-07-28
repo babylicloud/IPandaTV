@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.androidkun.PullToRefreshRecyclerView;
 import com.androidkun.callback.PullToRefreshListener;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,6 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.BroadHead
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.PandaBroadBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.contract.BroadCastContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.presenter.BroadCastPresenter;
-import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 /**
  * Created by INS7566 on 2017/7/28.
@@ -44,7 +44,7 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
     private List<PandaBroadBean.ListBean> mList = new ArrayList<>();
     private BobaoAdapter bobaoAdapter;
     private String urls;
-    private BroadHeaderBean bobaoHeaderBean;
+
     private int Index = 1;
     private BroadCastPresenter bobaoPresenter;
     private String url;
@@ -58,7 +58,8 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
 
     @Override
     protected void init(View view) {
-
+//        ShowDialog.getInsent();
+        bobaoPresenter = new BroadCastPresenter(this);
         view1 = LayoutInflater.from(getContext()).inflate(R.layout.image_header_fragment, null);
         mImage = (ImageView) view1.findViewById(R.id.Header_image);
         title = (TextView) view1.findViewById(R.id.Header_title);
@@ -107,7 +108,7 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
 
     @Override
     protected void loadData() {
-        bobaoPresenter = new BroadCastPresenter(this);
+
         presenter.start();
         bobaoAdapter = new BobaoAdapter(getContext(), mList);
         mRecyclerView.setAdapter(bobaoAdapter);
@@ -139,27 +140,19 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
 
         mList.addAll(pandaLiveBean.getList());
         bobaoAdapter.notifyDataSetChanged();
-//        ShowPopuUtils.getInsent().popuUtilsDismiss();
+//        ShowDialog.getInsent().popuUtilsDismiss();
     }
 
     @Override
     public void setResultHeadler(BroadHeaderBean broadHeaderBean) {
 //        tupian = bobaoHeaderBean.getData().getBigImg().get(0).getImage();
-//        Glide.with(App.activity).load(tupian).into(mImage);
-//        mTitle = bobaoHeaderBean.getData().getBigImg().get(0).getTitle();
-//        this.title.setText(mTitle);
-//        url = bobaoHeaderBean.getData().getBigImg().get(0).getUrl();
-    }
-
-    @Override
-    public void showMessage(String msg) {
-
+        Glide.with(App.activity).load( broadHeaderBean.getData().getBigImg().get(0).getImage()).into(mImage);
+       mTitle = broadHeaderBean.getData().getBigImg().get(0).getTitle();
+        this.title.setText(mTitle);
+        url = broadHeaderBean.getData().getBigImg().get(0).getUrl();
     }
 
 
-    @Override
-    public void ShowMessageTwo(String msg) {
-    }
     @Override
     public void setPresenter(BroadCastContract.Presenter presenter) {
         this.presenter = presenter;
@@ -177,7 +170,7 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
 
     @Override
     public void showAcache() {
-        ACache aCache=ACache.get(App.activity);
+//        ACache aCache=ACache.get(App.activity);
 //        BroadHeaderBean broadHeader = (BroadHeaderBean) aCache.getAsObject("BroadHeaderBean");
 //        tupian = broadHeader.getData().getBigImg().get(0).getImage();
 //        Glide.with(App.activity).load(tupian).into(mImage);
@@ -185,9 +178,14 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
 //        this.title.setText(mTitle);
 //        url = broadHeader.getData().getBigImg().get(0).getUrl();
 //        mList.addAll(pandaLiveBean.getList());
-        PandaBroadBean pandaBroadBea = (PandaBroadBean) aCache.getAsObject("PandaBroadBean");
-        mList.addAll(pandaBroadBea.getList());
-        bobaoAdapter.notifyDataSetChanged();
+//        PandaBroadBean pandaBroadBea = (PandaBroadBean) aCache.getAsObject("PandaBroadBean");
+//        mList.addAll(pandaBroadBea.getList());
+//        bobaoAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showErrorMsg() {
+
     }
 
 }

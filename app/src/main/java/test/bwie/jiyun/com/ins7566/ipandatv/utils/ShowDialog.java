@@ -3,29 +3,40 @@ package test.bwie.jiyun.com.ins7566.ipandatv.utils;
 import android.app.Dialog;
 import android.content.Context;
 
+import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 
 /**
  * Created by INS7566 on 2017/7/27.
  */
 
-public class ShowDialog {
-    private static ShowDialog showPopuUtils;
-
-    private ShowDialog() {
-    }
+public class ShowDialog extends Dialog{
+    private static ShowDialog showDialog;
 
     private Dialog loadDialog;
 
+    public ShowDialog(Context context) {
+        super(context);
+    }
+
+    public ShowDialog(Context context, int themeResId) {
+        super(context, themeResId);
+    }
+
+    protected ShowDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+        super(context, cancelable, cancelListener);
+    }
+
+
     public static ShowDialog getInsent() {
-        if (showPopuUtils == null) {
+        if (showDialog == null) {
             synchronized (ShowDialog.class) {
-                if (showPopuUtils == null) {
-                    showPopuUtils = new ShowDialog();
+                if (showDialog == null) {
+                    showDialog = new ShowDialog(App.context);
                 }
             }
         }
-        return showPopuUtils;
+        return showDialog;
     }
 
     public ShowDialog create(Context context) {
@@ -40,8 +51,9 @@ public class ShowDialog {
     }
 
     public ShowDialog popuUtilsDismiss() {
-
-        loadDialog.dismiss();
+        if(showDialog!=null&&showDialog.isShowing()) {
+            loadDialog.dismiss();
+        }
         return this;
     }
 }
