@@ -10,5 +10,6 @@ public interface BaseView<T> {
     void showProgress();
     void dismissProgress();
     void showAcache();
+    void showErrorMsg();
 
 }
