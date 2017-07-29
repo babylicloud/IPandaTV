@@ -1,4 +1,4 @@
-package test.bwie.jiyun.com.ins7566.ipandatv.model;
+package test.bwie.jiyun.com.ins7566.ipandatv.model.broatcast;
 
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.HttpFactory;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.INetWorkCallback;
