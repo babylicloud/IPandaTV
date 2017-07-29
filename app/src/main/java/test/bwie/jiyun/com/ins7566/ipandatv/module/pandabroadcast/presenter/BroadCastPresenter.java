@@ -1,8 +1,8 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.presenter;
 
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.INetWorkCallback;
-import test.bwie.jiyun.com.ins7566.ipandatv.model.BroadCastImpl;
-import test.bwie.jiyun.com.ins7566.ipandatv.model.IBroadCast;
+import test.bwie.jiyun.com.ins7566.ipandatv.model.broatcast.BroadCastImpl;
+import test.bwie.jiyun.com.ins7566.ipandatv.model.broatcast.IBroadCast;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.BroadHeaderBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.PandaBroadBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.contract.BroadCastContract;

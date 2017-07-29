@@ -8,10 +8,9 @@ import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
 
-
 public class ConfigFragment {
 
-    private FragmentManager manager;
+   private FragmentManager manager;
     private FragmentTransaction transaction;
     private BaseFragment fragment;
     private Boolean isbask;
@@ -100,5 +99,6 @@ public class ConfigFragment {
         transaction.commit();//提交事物
         return fragment;
     }
+
 
 }
