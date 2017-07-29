@@ -33,7 +33,6 @@ public class HudongActivity extends BaseActivity implements HudongContract.View{
     Toolbar toolbar;
     @BindView(R.id.Hudong_recyclerView)
     PullToRefreshRecyclerView HudongRecyclerView;
-    private HudongAdapter hudongAdapter;
     private List<HudongBean.InteractiveBean> mList = new ArrayList<>();
     private int Index= 1;
     private HudongAdapter mAdapter;
@@ -150,5 +149,10 @@ public class HudongActivity extends BaseActivity implements HudongContract.View{
         HudongBean hudongobj = (HudongBean) aCache.getAsObject("HudongBean");
         mList.addAll(hudongobj.getInteractive());
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showErrorMsg() {
+
     }
 }
