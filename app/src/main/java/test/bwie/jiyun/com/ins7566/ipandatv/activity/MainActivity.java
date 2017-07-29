@@ -58,6 +58,7 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         fragmentManager = getSupportFragmentManager();
         App.mRadiogroup = (RadioGroup) findViewById(R.id.FrameLayout_contentGroup);
+
     }
 
     @Override
