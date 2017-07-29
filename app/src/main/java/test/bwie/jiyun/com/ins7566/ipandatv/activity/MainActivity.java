@@ -16,7 +16,6 @@ import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
-import test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment.HomeFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.livechina.fragment.LiveChinaFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.FragmentBuilder;
@@ -65,7 +64,7 @@ public class MainActivity extends BaseActivity {
     public void initData() {
 //        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
 //        ConfigFragment.getInstanca().start(HomeFragment.class).builder();
-        FragmentBuilder.getInstance().start(HomeFragment.class,R.id.FrameLayout).builder();
+//        FragmentBuilder.getInstance().start(HomeFragment.class,R.id.FrameLayout).builder();
     }
 
     @Override
