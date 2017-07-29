@@ -141,6 +141,11 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     }
 
     @Override
+    public void showErrorMsg() {
+
+    }
+
+    @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
     }
