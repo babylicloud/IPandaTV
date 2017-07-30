@@ -1,6 +1,8 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.androidkun.adapter.BaseAdapter;
@@ -11,7 +13,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
+import test.bwie.jiyun.com.ins7566.ipandatv.activity.VedioActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.PandaBroadBean;
 
 /**
@@ -48,20 +52,20 @@ public class BobaoAdapter extends BaseAdapter<PandaBroadBean.ListBean> {
 //            e.printStackTrace();
 //        }
 
-//        holder.setOnclickListener(R.id.panda_observe_relativeLayout, new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context,VideoActivity.class);
-//                intent.putExtra("url",pandaBroadBean.getUrl());
-//                intent.putExtra("title",pandaBroadBean.getTitle());
-//                intent.putExtra("pid",pandaBroadBean.getGuid());
-//                intent.putExtra("image",pandaBroadBean.getPicurl());
-////                MyLog.e("Url",pandaBroadBean.getUrl()+pandaBroadBean.getTitle());
-//                App.activity.startActivity(intent);
-//
-//
-//            }
-//        });
+        holder.setOnclickListener(R.id.panda_observe_relativeLayout, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,VedioActivity.class);
+                intent.putExtra("url",pandaBroadBean.getUrl());
+                intent.putExtra("title",pandaBroadBean.getTitle());
+                intent.putExtra("pid",pandaBroadBean.getGuid());
+                intent.putExtra("image",pandaBroadBean.getPicurl());
+//                MyLog.e("Url",pandaBroadBean.getUrl()+pandaBroadBean.getTitle());
+                App.activity.startActivity(intent);
+
+
+            }
+        });
     }
 
 
