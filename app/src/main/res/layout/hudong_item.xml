@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:weightSum="1">
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/hudong_linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/Hudong_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="二十四节气——芒种"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="17dp"
+        android:background="#b1a5a5"
+        android:textColor="@color/colorPrimaryDark"
+        />
+
+    <ImageView
+        android:id="@+id/Hudong_item_Image"
+        android:layout_width="449dp"
+        android:layout_height="243dp"
+        android:layout_marginTop="3dp"
+        android:scaleType="centerCrop" />
+</LinearLayout>
+
+</LinearLayout>

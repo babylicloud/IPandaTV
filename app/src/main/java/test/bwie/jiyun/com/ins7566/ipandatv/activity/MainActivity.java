@@ -1,6 +1,8 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Process;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,6 +18,9 @@ import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment.HomeFragment;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.gerenzhongxin.MyselfActivity;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.hudong.HudongActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.livechina.fragment.LiveChinaFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.FragmentBuilder;
@@ -48,7 +53,8 @@ public class MainActivity extends BaseActivity {
     ImageView hudongImg;
     private long lastTime;//上一次点击back键的时间毫秒数
     public static final int HOMETYPE = 1;
-    private  FragmentManager fragmentManager;
+    private FragmentManager fragmentManager;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -65,7 +71,7 @@ public class MainActivity extends BaseActivity {
     public void initData() {
 //        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
 //        ConfigFragment.getInstanca().start(HomeFragment.class).builder();
-//        FragmentBuilder.getInstance().start(HomeFragment.class,R.id.FrameLayout).builder();
+        FragmentBuilder.getInstance().start(HomeFragment.class, R.id.FrameLayout).builder();
     }
 
     @Override
@@ -78,22 +84,23 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.main_home_btn:
                 initView();
-                showTitle(null,HOMETYPE);
+                showTitle(null, HOMETYPE);
+                FragmentBuilder.getInstance().start(HomeFragment.class, R.id.FrameLayout).builder();
                 break;
             case R.id.main_live_btn:
-                showTitle("熊猫直播",0);
+                showTitle("熊猫直播", 0);
                 break;
             case R.id.main_culture_btn:
-                showTitle("熊猫文化",0);
+                showTitle("熊猫文化", 0);
                 break;
             case R.id.main_broadcast_btn:
                 initView();
-                showTitle("熊猫观察",0);
-                FragmentBuilder.getInstance().start(PandaBroadcastFragment.class,R.id.FrameLayout).builder();
+                showTitle("熊猫观察", 0);
+                FragmentBuilder.getInstance().start(PandaBroadcastFragment.class, R.id.FrameLayout).builder();
                 break;
             case R.id.main_china_btn:
-                showTitle("直播中国",0);
-                FragmentBuilder.getInstance().start(LiveChinaFragment.class,R.id.FrameLayout).builder();
+                showTitle("直播中国", 0);
+                FragmentBuilder.getInstance().start(LiveChinaFragment.class, R.id.FrameLayout).builder();
                 break;
 
         }
@@ -122,8 +129,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-//        获取栈顶的
-
+        //获取栈顶的
+////        getSupportFragmentManager().getBackStackEntryCount(getSupportFragmentManager().getBackStackEntryCount()-1);
 //        if (System.currentTimeMillis() - lastTime < 2000) {
 //            finish();
 //        } else {
@@ -131,7 +138,7 @@ public class MainActivity extends BaseActivity {
 //            Toast.makeText(MainActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
 //            lastTime = System.currentTimeMillis();
 //        }
-        FragmentManager.BackStackEntry entryAt = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() -1);
+        FragmentManager.BackStackEntry entryAt = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1);
         //得到每一个位于栈顶的类的名字，然后执行Finish方法进行弹栈
         String name = entryAt.getName();
         if ("HomeFragment".equals(name) ||
@@ -141,15 +148,14 @@ public class MainActivity extends BaseActivity {
                 "PandaLiveFragment".equals(name)
                 ) {
 //           finish();
-//            Process.killProcess(Process.myPid());
+            Process.killProcess(Process.myPid());
             System.exit(0);
 
-
-        }else{
+        } else {
             if (fragmentManager.getBackStackEntryCount() > 1) {
                 fragmentManager.popBackStackImmediate();//执行弹栈，立马执行
                 //否则记录得到位于栈顶的类名字
-                String simpleName = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-1 ).getName();
+                String simpleName = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
                 //记录做标记，标记为上一个Fragment,点击back键刷新lastFragment
                 App.lastFragment = (BaseFragment) fragmentManager.findFragmentByTag(simpleName);
             }
@@ -160,10 +166,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        Process.killProcess(Process.myPid());//获取pid
+        Process.killProcess(Process.myPid());//获取pid
         System.exit(0);
 //        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
-
+        super.onDestroy();
     }
 
     //隐藏下面的RadioGroup
@@ -173,5 +179,20 @@ public class MainActivity extends BaseActivity {
 
     public void setMainRadioGroup(RadioGroup mainRadioGroup) {
         FrameLayoutContentGroup = mainRadioGroup;
+    }
+
+    @OnClick({R.id.personImg, R.id.hudongImg})
+    public void onClicked(View view) {
+        switch (view.getId()) {
+            case R.id.personImg:
+
+                Intent intent1 = new Intent(this,MyselfActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.hudongImg:
+                Intent intent = new Intent(this, HudongActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

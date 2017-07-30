@@ -49,6 +49,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
     @Override
     protected int getLayoutId() {
         return R.layout.main_headpage;
+
     }
 
     @Override
