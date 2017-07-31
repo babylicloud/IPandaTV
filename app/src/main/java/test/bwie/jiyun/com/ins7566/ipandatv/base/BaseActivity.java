@@ -26,22 +26,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         loadData();
 
     }
-//private boolean mFlag;
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        //记住当前的BaseActivity
-//        App.activity = this;
-//        //当页面可见时加载数据
-////        MobclickAgent.onResume(this);
-//
-//        App.activity = this;
-//        if(mFlag) {
-//            loadData();
-//            mFlag=false;
-//        }
-//
-//    }
+private boolean mFlag;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //记住当前的BaseActivity
+        App.activity = this;
+        //当页面可见时加载数据
+//        MobclickAgent.onResume(this);
+
+        App.activity = this;
+        if(mFlag) {
+            loadData();
+            mFlag=false;
+        }
+
+    }
 
     public void onPause() {
         super.onPause();

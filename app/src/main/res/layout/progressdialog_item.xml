@@ -6,11 +6,12 @@
     android:gravity="center">
     <LinearLayout
         android:gravity="center"
-        android:background="#6e6b6b"
+        android:background="@drawable/dialog_shape"
         android:layout_width="70dp"
         android:layout_height="70dp">
         <ProgressBar
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            />
     </LinearLayout>
 </LinearLayout>

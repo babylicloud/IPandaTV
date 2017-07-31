@@ -27,6 +27,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.BroadHead
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.bean.PandaBroadBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.contract.BroadCastContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.presenter.BroadCastPresenter;
+import test.bwie.jiyun.com.ins7566.ipandatv.utils.ShowDialog;
 
 /**
  * Created by INS7566 on 2017/7/28.
@@ -140,12 +141,11 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
 
         mList.addAll(pandaLiveBean.getList());
         bobaoAdapter.notifyDataSetChanged();
-//        ShowDialog.getInsent().popuUtilsDismiss();
+
     }
 
     @Override
     public void setResultHeadler(BroadHeaderBean broadHeaderBean) {
-//        tupian = bobaoHeaderBean.getData().getBigImg().get(0).getImage();
         Glide.with(App.activity).load( broadHeaderBean.getData().getBigImg().get(0).getImage()).into(mImage);
        mTitle = broadHeaderBean.getData().getBigImg().get(0).getTitle();
         this.title.setText(mTitle);
@@ -160,11 +160,13 @@ public class PandaBroadcastFragment extends BaseFragment implements BroadCastCon
 
     @Override
     public void showProgress() {
+        ShowDialog.getInsent().create(App.activity);
 
     }
 
     @Override
     public void dismissProgress() {
+        ShowDialog.getInsent().popuUtilsDismiss();
 
     }
 
