@@ -1,6 +1,7 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.module.home.gerenzhongxin;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +13,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.LoginBean;
+import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
+import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.MyLog;
 
 /**
  * Created by Lenovo on 2017/7/29.
@@ -37,7 +41,10 @@ public class MyselfActivity extends BaseActivity {
     ImageView pandaPersonSet;
     @BindView(R.id.panda_person_setting)
     RelativeLayout pandaPersonSetting;
-
+    private LoginBean loginBean;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private String name ;
     @Override
     protected int getLayoutId() {
         return R.layout.panda_person_view;
@@ -50,6 +57,12 @@ public class MyselfActivity extends BaseActivity {
 
     @Override
     public void initData() {
+
+//        preferences = getSharedPreferences("data",MODE_PRIVATE);
+//
+//        name = preferences.getString("name","");
+//
+//        TextPerson.setText(name);
 
     }
 
@@ -69,8 +82,20 @@ public class MyselfActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.panda_person_username:
+                ACache acache = ACache.get(this);
+                loginBean = (LoginBean) acache.getAsObject("loginentity");
+                if (loginBean == null && TextPerson.getText().toString().equals("点击登录")) {
+                    Intent in = new Intent(this, LoginActivity.class);
+                    startActivityForResult(in, 50);
+                } else {
+                    Intent in = new Intent(this, Person_InfoActivity.class);
+                    in.putExtra("userName", TextPerson.getText().toString());
+                    startActivityForResult(in, 300);
+                }
+
                 break;
             case R.id.panda_person_guankanlishi:
+
 
 
                 break;
@@ -85,4 +110,26 @@ public class MyselfActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 10:
+                name = data.getStringExtra("name");
+                MyLog.e("TAB", name);
+                TextPerson.setText(name);
+                break;
+            case 50:
+                TextPerson.setText(data.getStringExtra("user"));
+                MyLog.e("TAG", data.getStringExtra("user"));
+                break;
+            case 300:
+                TextPerson.setText(data.getStringExtra("edit"));
+                MyLog.e("TAG", data.getStringExtra("edit"));
+                break;
+        }
+    }
+
+
 }

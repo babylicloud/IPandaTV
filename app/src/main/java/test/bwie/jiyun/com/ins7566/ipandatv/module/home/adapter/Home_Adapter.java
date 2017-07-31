@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -28,7 +29,7 @@ public class Home_Adapter extends RecyclerView.Adapter {
     private Context context;
     public static final int TYPE1 = 1, TYPE2 = 2, TYPE3 = 3, TYPE4 = 4, TYPE5 = 5;
     public View view, view1, view2, view3, view4;
-    setOnClick onClick;
+    private setOnClick onClick;
 
     public Home_Adapter(Context context, List<Object> mlist) {
         this.mlist = mlist;
@@ -134,41 +135,36 @@ public class Home_Adapter extends RecyclerView.Adapter {
             t2 = (TextView) itemView.findViewById(R.id.pandalive_content);
         }
 
+
+
+
         public void setFirst(final HomePageBean.DataBean.PandaeyeBean pandaeyeBean) {
             Glide.with(context).load(pandaeyeBean.getPandaeyelogo()).into(imageView);
             t1.setText(pandaeyeBean.getItems().get(0).getTitle());
             t2.setText(pandaeyeBean.getItems().get(1).getTitle());
-//            t1.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    onClick.setOnClick(pandaeyeBean, 0, view);
-//                }
-//            });
-//            t2.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    onClick.setOnClick(pandaeyeBean, 1, view);
-//                }
-//            });
-//            t1.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
+
+            t1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 //                    Intent in = new Intent(App.activity, VideoActivity.class);
 //                    in.putExtra("url", "");
 //                    in.putExtra("pid", pandaeyeBean.getItems().get(0).getPid());
 //                    in.putExtra("title", pandaeyeBean.getItems().get(0).getTitle());
 //                    context.startActivity(in);
-//                }
-//            });
-//            t2.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
+                    onClick.setTYPE1(v);
+
+                }
+            });
+            t2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 //                    Intent in = new Intent(App.activity, VideoActivity.class);
 //                    in.putExtra("pid", pandaeyeBean.getItems().get(1).getPid());
 //                    in.putExtra("title", pandaeyeBean.getItems().get(1).getTitle());
 //                    context.startActivity(in);
-//                }
-//            });
+                    onClick.setTYPE2(v);
+                }
+            });
         }
 
     }
@@ -184,15 +180,18 @@ public class Home_Adapter extends RecyclerView.Adapter {
         public void setTwo(final HomePageBean.DataBean.PandaliveBean listBean) {
             Home_Elegant_Adapter adapter = new Home_Elegant_Adapter(context, listBean.getList());
             gridView.setAdapter(adapter);
-//            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                    Intent in = new Intent(App.activity, VideoActivity.class);
 //                    in.putExtra("pid", listBean.getList().get(position).getVid());
 //                    in.putExtra("title", listBean.getList().get(position).getTitle());
 //                    context.startActivity(in);
-//                }
-//            });
+
+                    onClick.setTYPE3(view);
+
+                }
+            });
         }
     }
 
@@ -208,16 +207,18 @@ public class Home_Adapter extends RecyclerView.Adapter {
         public void setThree(final HomePageBean.DataBean.AreaBean areaBean) {
             Home_Amazing_Adapter adapter1 = new Home_Amazing_Adapter(context, areaBean.getListscroll());
             gridView.setAdapter(adapter1);
-//            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                    Intent in = new Intent(App.activity, VideoActivity.class);
 //                    in.putExtra("pid", areaBean.getListscroll().get(position).getPid());
 //                    in.putExtra("title", areaBean.getListscroll().get(position).getTitle());
 //                    in.putExtra("image", areaBean.getListscroll().get(position).getImage());
 //                    context.startActivity(in);
-//                }
-//            });
+
+                    onClick.setTYPE4(view);
+                }
+            });
        }
     }
 
@@ -233,15 +234,17 @@ public class Home_Adapter extends RecyclerView.Adapter {
         public void setFour(final HomePageBean.DataBean.WallliveBean wallliveBean) {
             Home_Vadio_Adapter home_vadio_adapter = new Home_Vadio_Adapter(context, wallliveBean.getList());
             home_ListView.setAdapter(home_vadio_adapter);
-//            home_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            home_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                    Intent in = new Intent(App.activity, VideoActivity.class);
 //                    in.putExtra("pid", wallliveBean.getList().get(position).getVid());
 //                    in.putExtra("title", wallliveBean.getList().get(position).getTitle());
 //                    context.startActivity(in);
-//                }
-//            });
+
+                    onClick.setTYPE5(view);
+                }
+            });
         }
     }
 
@@ -257,15 +260,18 @@ public class Home_Adapter extends RecyclerView.Adapter {
         public void setFive(final HomePageBean.DataBean.ChinaliveBean chinaliveBean) {
             Home_China_Adapter home_china_adapter = new Home_China_Adapter(context, chinaliveBean.getList());
             home_GridView_China.setAdapter(home_china_adapter);
-//            home_GridView_China.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            home_GridView_China.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                    Intent in = new Intent(App.activity, VideoActivity.class);
 //                    in.putExtra("pid", chinaliveBean.getList().get(position).getVid());
 //                    in.putExtra("title", chinaliveBean.getList().get(position).getTitle());
 //                    context.startActivity(in);
-//                }
-//            });
+                    onClick.setTYPE6(view);
+
+
+                }
+            });
         }
     }
 }

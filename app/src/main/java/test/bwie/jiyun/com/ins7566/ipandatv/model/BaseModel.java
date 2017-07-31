@@ -11,5 +11,5 @@ import test.bwie.jiyun.com.ins7566.ipandatv.internet.IHttp;
 public interface BaseModel {
     public static IHttp iHttp = HttpFactory.create();
 
-//    public static IHttp getiHttp=HttpFactory.create1();
+    public static IHttp getiHttp=HttpFactory.create1();
 }
