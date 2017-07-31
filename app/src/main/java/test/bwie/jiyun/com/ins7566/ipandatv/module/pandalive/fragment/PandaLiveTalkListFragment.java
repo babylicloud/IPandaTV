@@ -36,6 +36,7 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
     @BindView(R.id.duoshijiaopullrecycler)
     PullToRefreshRecyclerView duoshijiaopullrecycler;
     Unbinder unbinder;
+
     private PandaTalkAdapter adapter;
     private List<PandaLiveTalkListBean.DataBean.ContentBean> mList = new ArrayList<>();
     private LiveContract.Presenter presenter;

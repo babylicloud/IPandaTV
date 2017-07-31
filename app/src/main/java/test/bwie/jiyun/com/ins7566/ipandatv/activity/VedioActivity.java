@@ -2,6 +2,7 @@ package test.bwie.jiyun.com.ins7566.ipandatv.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.List;
 
@@ -69,6 +70,32 @@ public class VedioActivity extends BaseActivity implements VedioContract.View {
         url = chapters2.get(0).getUrl();
         jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
         jcVideoPlayerStandard.startVideo();
+        jcVideoPlayerStandard.setMonitor(new JCVideoPlayerStandard.imgClickon() {
+            @Override
+            public void Monitor(View view) {
+
+            }
+
+            @Override
+            public void Back(View view) {
+            finish();
+            }
+
+            @Override
+            public void WatchthelistMonitor(View view) {
+
+            }
+
+            @Override
+            public void PopupGao(View view) {
+
+            }
+
+            @Override
+            public void PopupBiao(View view) {
+
+            }
+        });
     }
 
     @Override
