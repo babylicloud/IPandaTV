@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.androidkun.PullToRefreshRecyclerView;
 import com.androidkun.callback.PullToRefreshListener;
@@ -39,12 +40,15 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
     @BindView(R.id.duoshijiaopullrecycler)
     PullToRefreshRecyclerView duoshijiaopullrecycler;
     Unbinder unbinder;
+    @BindView(R.id.Lin)
+    LinearLayout Lin;
     private PandaLiveDuoshijiaoAdapter adapter;
-    private List<PandaLiveDuoshijiaoBean.ListBean> mList=new ArrayList<>();
+    private List<PandaLiveDuoshijiaoBean.ListBean> mList = new ArrayList<>();
     private LiveContract.Presenter presenter;
-    private int Index=1;
+    private int Index = 1;
 
     private PandaAnglePresenter presente;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_duoshijiao;
@@ -52,9 +56,10 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
 
     @Override
     protected void init(View view) {
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        Lin.setVisibility(View.GONE);
         duoshijiaopullrecycler.addItemDecoration(new DividerItemDecoration(App.activity, DividerItemDecoration.VERTICAL));
         duoshijiaopullrecycler.setLayoutManager(gridLayoutManager);
         duoshijiaopullrecycler.setPullRefreshEnabled(true);//下拉刷新
@@ -92,13 +97,13 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
             }
         });
 
-       adapter = new PandaLiveDuoshijiaoAdapter(getContext(),mList);
+        adapter = new PandaLiveDuoshijiaoAdapter(getContext(), mList);
         duoshijiaopullrecycler.setAdapter(adapter);
     }
 
     @Override
     protected void loadData() {
-        presente=new PandaAnglePresenter(this);
+        presente = new PandaAnglePresenter(this);
         presenter.start();
     }
 
@@ -155,7 +160,7 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
 
     @Override
     public void setPresenter(LiveContract.Presenter presenter) {
-        this.presenter=presenter;
+        this.presenter = presenter;
 
     }
 

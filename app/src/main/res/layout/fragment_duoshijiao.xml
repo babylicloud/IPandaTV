@@ -4,6 +4,27 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/Lin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:hint="添加评论..." />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="#1c16c4"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="发送"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
     <com.androidkun.PullToRefreshRecyclerView
         android:id="@+id/duoshijiaopullrecycler"
         android:layout_width="match_parent"

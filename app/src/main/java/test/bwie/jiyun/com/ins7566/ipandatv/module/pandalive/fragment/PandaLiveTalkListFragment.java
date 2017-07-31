@@ -41,6 +41,7 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
     private LiveContract.Presenter presenter;
     private int Index = 1;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_duoshijiao;
@@ -52,12 +53,11 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         duoshijiaopullrecycler.addItemDecoration(new DividerItemDecoration(App.activity, DividerItemDecoration.VERTICAL));
         duoshijiaopullrecycler.setLayoutManager(layoutManager);
-        duoshijiaopullrecycler.setPullRefreshEnabled(true);//下拉刷新
+        duoshijiaopullrecycler.setPullRefreshEnabled(false);//下拉刷新
         //是否开启上拉加载功能
         duoshijiaopullrecycler.setLoadingMoreEnabled(true);
         //开启刷新回调
-        duoshijiaopullrecycler.displayLastRefreshTime(true);
-        //停止刷新
+        duoshijiaopullrecycler.displayLastRefreshTime(false);
         //停止刷新
         duoshijiaopullrecycler.setPullToRefreshListener(new PullToRefreshListener() {
             @Override
@@ -68,7 +68,6 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
                         duoshijiaopullrecycler.setRefreshComplete();
                         mList.clear();
                         loadData();
-
                     }
                 }, 2000);
             }
@@ -81,19 +80,16 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
                         duoshijiaopullrecycler.setLoadMoreComplete();
                         Index++;
                         loadData();
-
                     }
                 }, 2000);
             }
         });
-
         adapter = new PandaTalkAdapter(getContext(), mList);
         duoshijiaopullrecycler.setAdapter(adapter);
     }
 
     @Override
     protected void loadData() {
-
         new PandaTalkpresenter(this);
         presenter.start();
     }
@@ -130,16 +126,13 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
     @Override
     public void showeyeFragment(PandaLiveTalkListBean pandaLiveTalkListBean) {
         mList.addAll(pandaLiveTalkListBean.getData().getContent());
-
         adapter.notifyDataSetChanged();
-
     }
 
     @Override
     public void showMessage(String msg) {
         ACache aCache = ACache.get(getContext());
         PandaLiveTalkListBean aCacheAsObject = (PandaLiveTalkListBean) aCache.getAsObject("PandaLiveTalkListBean");
-
         mList.addAll(aCacheAsObject.getData().getContent());
         adapter.notifyDataSetChanged();
     }
