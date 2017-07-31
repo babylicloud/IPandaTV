@@ -17,4 +17,10 @@ public class HttpFactory {
         }
         return iHttp;
     }
+
+    public static IHttp create1() {
+        return HeaderUtils.getInstance();
+    }
+
+
 }

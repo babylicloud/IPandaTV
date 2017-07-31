@@ -24,6 +24,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.HomeViewPagerAdapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.Home_Adapter;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.setOnClick;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.setViewPagerListener;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.HomePageBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
@@ -103,6 +104,39 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
     protected void loadData() {
         new HomePresenter(this);
         presenter.start();
+
+        homeAdapter.setOnClick(new setOnClick() {
+            @Override
+            public void setTYPE1(View view) {
+
+            }
+
+            @Override
+            public void setTYPE2(View view) {
+
+            }
+
+            @Override
+            public void setTYPE3(View view) {
+
+            }
+
+            @Override
+            public void setTYPE4(View view) {
+
+            }
+
+            @Override
+            public void setTYPE5(View view) {
+
+            }
+
+            @Override
+            public void setTYPE6(View view) {
+
+            }
+        });
+
     }
 
     @Override

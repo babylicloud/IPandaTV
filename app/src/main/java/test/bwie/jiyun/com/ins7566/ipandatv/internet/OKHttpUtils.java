@@ -21,6 +21,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.INetWorkCallback;
+import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NNetWorkCallback;
+import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 /**
@@ -144,9 +146,26 @@ public class OKHttpUtils implements IHttp{
     }
 
     @Override
-    public <T> void download(String url, Map<String, String> params, INetWorkCallback<T> callback) {
+    public <T> void doget(String url, Map<String, String> params, NetWorkCallback callback) {
 
     }
+
+    @Override
+    public <T> void getSjYam(String url, Map<String, String> params, NNetWorkCallback callback) {
+
+    }
+
+    @Override
+    public <T> void Register(String url, Map<String, String> params, NNetWorkCallback callback) {
+
+    }
+
+    @Override
+    public <T> void EmailRegister(String url, Map<String, String> params, NNetWorkCallback callback) {
+
+    }
+
+
 
 
     /**
