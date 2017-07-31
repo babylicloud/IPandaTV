@@ -68,8 +68,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
-//        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
-//        ConfigFragment.getInsanca().start(HomeFragment.class).builder();
         FragmentBuilder.getInstance().start(HomeFragment.class, R.id.FrameLayout).builder();
     }
 
@@ -130,7 +128,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-//        获取栈顶的
 
 //        if (System.currentTimeMillis() - lastTime < 2000) {
 //            finish();

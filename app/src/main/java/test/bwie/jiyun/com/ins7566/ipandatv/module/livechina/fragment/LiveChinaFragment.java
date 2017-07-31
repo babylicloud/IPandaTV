@@ -117,7 +117,7 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
         List<PopupBean.AlllistBean> alllist = popupBean.getAlllist();
         initDataOther(alllist);
 //        ShowPopuUtils.getInsent().popuUtilsDismiss();
-        liveChenaIBtn.setOnClickListener(new View.OnClickListener() {
+        liveChenaIBtn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 View view = LayoutInflater.from(getActivity()).inflate(R.layout.zhibochena_fragment, null);
@@ -151,8 +151,6 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
     public void showErrorMsg() {
         ACache aCache = ACache.get(getContext());
         PopupBean asObject = (PopupBean) aCache.getAsObject("PopupBean");
-
-
         add_Fragment(asObject);
     }
 
@@ -181,6 +179,7 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
         adapter = new PandaDirectAdapter(getChildFragmentManager(), mListName, mList);
         liveChenaViewPager.setAdapter(adapter);
         liveChenaTabLayout.setupWithViewPager(liveChenaViewPager);
+        liveChenaTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
 
     public void setRefresh() {
@@ -188,7 +187,6 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
         mList.clear();
         mListName.addAll(channels);
         Set<String> strings = mMapAllUrl.keySet();
-
         ChangchengFragment badaLingFragment = null;
         Bundle bundle = null;
         String url = null;
