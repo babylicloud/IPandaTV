@@ -1,5 +1,6 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,8 @@ import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment.HomeFragment;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.gerenzhongxin.MyselfActivity;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.hudong.HudongActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.livechina.fragment.LiveChinaFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandabroadcast.fragment.PandaBroadcastFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.fragment.PandaCultureFragment;
@@ -68,7 +71,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initData() {
 //        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
-//        ConfigFragment.getInsanca().start(HomeFragment.class).builder();
+//        ConfigFragment.getInstanca().start(HomeFragment.class).builder();
         FragmentBuilder.getInstance().start(HomeFragment.class, R.id.FrameLayout).builder();
     }
 
@@ -180,5 +183,20 @@ public class MainActivity extends BaseActivity {
 
     public void setMainRadioGroup(RadioGroup mainRadioGroup) {
         FrameLayoutContentGroup = mainRadioGroup;
+    }
+
+    @OnClick({R.id.personImg, R.id.hudongImg})
+    public void onClicked(View view) {
+        switch (view.getId()) {
+            case R.id.personImg:
+
+                Intent intent1 = new Intent(this,MyselfActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.hudongImg:
+                Intent intent = new Intent(this, HudongActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
