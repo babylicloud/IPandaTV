@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDDDDD"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#303F9F">
+
+        <ImageView
+            android:id="@+id/Login_Finish_Person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/personal_back_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="个人中心"
+            android:textColor="#ffffff"
+            android:textSize="25dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/panda_person_img"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:text="头像"
+            android:textSize="16sp" />
+
+
+        <ImageView
+            android:id="@+id/entry"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/personal_enter_img" />
+
+
+        <ImageView
+            android:id="@+id/panda_person_userimg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_toLeftOf="@id/entry"
+            android:src="@drawable/personal_login_head" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/panda_person_nicheng"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:text="昵称"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/entry1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/personal_enter_img" />
+
+
+        <TextView
+            android:id="@+id/panda_person_guankan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/entry1"
+            android:paddingRight="5dp"
+            android:src="@drawable/personal_history_img"
+            android:text="狗比"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/panda_person_tuichu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/shape"
+        android:text="退出登录"
+        android:textColor="#ffffff" />
+
+</LinearLayout>
