@@ -58,7 +58,6 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
         //开启刷新回调
         duoshijiaopullrecycler.displayLastRefreshTime(false);
         //停止刷新
-        //停止刷新
         duoshijiaopullrecycler.setPullToRefreshListener(new PullToRefreshListener() {
             @Override
             public void onRefresh() {
@@ -90,7 +89,6 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
 
     @Override
     protected void loadData() {
-
         new PandaTalkpresenter(this);
         presenter.start();
     }
@@ -127,16 +125,13 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
     @Override
     public void showeyeFragment(PandaLiveTalkListBean pandaLiveTalkListBean) {
         mList.addAll(pandaLiveTalkListBean.getData().getContent());
-
         adapter.notifyDataSetChanged();
-
     }
 
     @Override
     public void showMessage(String msg) {
         ACache aCache = ACache.get(getContext());
         PandaLiveTalkListBean aCacheAsObject = (PandaLiveTalkListBean) aCache.getAsObject("PandaLiveTalkListBean");
-
         mList.addAll(aCacheAsObject.getData().getContent());
         adapter.notifyDataSetChanged();
     }

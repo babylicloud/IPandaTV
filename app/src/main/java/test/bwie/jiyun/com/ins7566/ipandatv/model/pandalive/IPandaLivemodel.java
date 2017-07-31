@@ -3,14 +3,13 @@ package test.bwie.jiyun.com.ins7566.ipandatv.model.pandalive;
 import java.util.Map;
 
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.INetWorkCallback;
-import test.bwie.jiyun.com.ins7566.ipandatv.model.BaseModel;
 
 
 /**
  * Created by lx on 2017/7/29.
  */
 
-public interface IPandaLivemodel extends BaseModel {
+public interface IPandaLivemodel{
     //标题栏
     <T> void getTabTitle(String url, Map<String, String> params, INetWorkCallback<T> callback);
 

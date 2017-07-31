@@ -24,6 +24,19 @@
         <activity android:name=".module.home.gerenzhongxin.Person_InfoActivity"></activity>
         <activity android:name=".module.home.gerenzhongxin.PersonAmendActivity"></activity>
 
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="597ecb4307fe656e79001ab7">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="77be44e1daa64364ade354c54c97ab47">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID" >
+        </meta-data>
+
     </application>
 
 </manifest>
