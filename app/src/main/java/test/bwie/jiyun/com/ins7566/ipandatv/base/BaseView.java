@@ -6,7 +6,6 @@ package test.bwie.jiyun.com.ins7566.ipandatv.base;
 
 
 public interface BaseView<T> {
-
     void setPresenter(T t);
     void showProgress();
     void dismissProgress();

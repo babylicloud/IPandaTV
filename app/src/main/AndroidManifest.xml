@@ -24,6 +24,9 @@
         <activity android:name=".module.home.gerenzhongxin.Person_InfoActivity"></activity>
         <activity android:name=".module.home.gerenzhongxin.PersonAmendActivity"></activity>
 
+        <activity android:name=".activity.YindaoActivity"/>
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.VedioActivity"/>
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="597ecb4307fe656e79001ab7">
