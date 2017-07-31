@@ -52,11 +52,11 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         duoshijiaopullrecycler.addItemDecoration(new DividerItemDecoration(App.activity, DividerItemDecoration.VERTICAL));
         duoshijiaopullrecycler.setLayoutManager(layoutManager);
-        duoshijiaopullrecycler.setPullRefreshEnabled(true);//下拉刷新
+        duoshijiaopullrecycler.setPullRefreshEnabled(false);//下拉刷新
         //是否开启上拉加载功能
         duoshijiaopullrecycler.setLoadingMoreEnabled(true);
         //开启刷新回调
-        duoshijiaopullrecycler.displayLastRefreshTime(true);
+        duoshijiaopullrecycler.displayLastRefreshTime(false);
         //停止刷新
         //停止刷新
         duoshijiaopullrecycler.setPullToRefreshListener(new PullToRefreshListener() {
@@ -68,7 +68,6 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
                         duoshijiaopullrecycler.setRefreshComplete();
                         mList.clear();
                         loadData();
-
                     }
                 }, 2000);
             }
@@ -81,12 +80,10 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
                         duoshijiaopullrecycler.setLoadMoreComplete();
                         Index++;
                         loadData();
-
                     }
                 }, 2000);
             }
         });
-
         adapter = new PandaTalkAdapter(getContext(), mList);
         duoshijiaopullrecycler.setAdapter(adapter);
     }

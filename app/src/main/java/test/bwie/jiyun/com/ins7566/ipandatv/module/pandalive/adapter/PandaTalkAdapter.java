@@ -9,6 +9,7 @@ import java.util.List;
 
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveTalkListBean;
+import test.bwie.jiyun.com.ins7566.ipandatv.utils.TimeUtils;
 
 
 /**
@@ -26,6 +27,9 @@ public class PandaTalkAdapter extends BaseAdapter<PandaLiveTalkListBean.DataBean
         holder.setText(R.id.talk_title, dataBean.getAuthor());
         holder.setText(R.id.talk_content, dataBean.getMessage());
         holder.setText(R.id.talk_lou, dataBean.getPid() + "楼");
-        holder.setText(R.id.talk_date, dataBean.getDateline());
+        for (int i = 0; i < dataBean.getDateline().length(); i++) {
+            String s = TimeUtils.dateString(Long.parseLong(dataBean.getDateline()));
+            holder.setText(R.id.talk_date, s);
+        }
     }
 }

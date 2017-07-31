@@ -34,7 +34,6 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.contract.LiveContra
  */
 
 public class LiveFragment extends BaseFragment implements LiveContract.View {
-
     @BindView(R.id.start)
     ImageView start;
     @BindView(R.id.direct_shipin_linear)
