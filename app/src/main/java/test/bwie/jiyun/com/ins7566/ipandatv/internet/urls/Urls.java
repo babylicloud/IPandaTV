@@ -20,45 +20,44 @@ public class Urls {
 
 
     //精彩一刻视频
-    public static final String VEDIOJCYK="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
+    public static final String VEDIOJCYK = "http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
     //熊猫文化第一个item里面的高清视频
-    public static final String VEDIOCULTURE="http://api.cntv.cn/video/videolistById?p=1&serviceId=panda&n=150&vsid=VSET100311356635 ";
+    public static final String VEDIOCULTURE = "http://api.cntv.cn/video/videolistById?p=1&serviceId=panda&n=150&vsid=VSET100311356635 ";
 
     //熊猫直播
     public static final String PANDALIVE = PANDAURL + "PAGE14501769230331752/index.json";
-    public static final String PANDAJCYK="  http://www.ipanda.com/kehuduan/PAGE14501772263221982/index.json";
+    public static final String PANDAJCYK = "  http://www.ipanda.com/kehuduan/PAGE14501772263221982/index.json";
     //熊猫直播多视角
-    public static  final String DUOSHIJIAO="http://www.ipanda.com/kehuduan/PAGE14501769230331752/PAGE14501787896813312/index.json";
+    public static final String DUOSHIJIAO = "http://www.ipanda.com/kehuduan/PAGE14501769230331752/PAGE14501787896813312/index.json";
     //熊猫直播标签
     public static final String PANDALIVEBQ = PANDAURL + "PAGE14501772263221982/index.json";
     //直播中国Tab
-    public static final String PANDA_LIVE_CHINA_TAB=PANDAURL+"PAGE14501775094142282/index.json";
+    public static final String PANDA_LIVE_CHINA_TAB = PANDAURL + "PAGE14501775094142282/index.json";
     /**
      * 直播中国
-     * */
-    public static final String PANDA_LIVE_CHINA_Changcheng = PANDAURL+"liebiao/badaling/index.json";
-    public static final String PANDA_LIVE_CHINA_Taishan = PANDAURL+"liebiao/taishan/index.json";
-    public static final String PANDA_LIVE_CHINA_Huangshan = PANDAURL+"liebiao/huangshan/index.json";
-    public static final String PANDA_LIVE_CHINA_Fenghuanggucheng = PANDAURL+"liebiao/fenghuanggucheng/index.json";
-    public static final String PANDA_LIVE_CHINA_Emeishan = PANDAURL+"liebiao/emeishan/index.json";
-    public static final String PANDA_LIVE_CHINA_Zhangjiajie = PANDAURL+"liebiao/PAGEjQscAxoVKOjRIpboc1oA160718/index.json";
-
+     */
+    public static final String PANDA_LIVE_CHINA_Changcheng = PANDAURL + "liebiao/badaling/index.json";
+    public static final String PANDA_LIVE_CHINA_Taishan = PANDAURL + "liebiao/taishan/index.json";
+    public static final String PANDA_LIVE_CHINA_Huangshan = PANDAURL + "liebiao/huangshan/index.json";
+    public static final String PANDA_LIVE_CHINA_Fenghuanggucheng = PANDAURL + "liebiao/fenghuanggucheng/index.json";
+    public static final String PANDA_LIVE_CHINA_Emeishan = PANDAURL + "liebiao/emeishan/index.json";
+    public static final String PANDA_LIVE_CHINA_Zhangjiajie = PANDAURL + "liebiao/PAGEjQscAxoVKOjRIpboc1oA160718/index.json";
 
 
     //熊猫首页
-    public static final String HOME_URL = PANDAURL+"PAGE14501749764071042/index.json";
+    public static final String HOME_URL = PANDAURL + "PAGE14501749764071042/index.json";
     //CCTV
-    public static final String CCTV = PANDAURL+"shipinliebieye/cctvshipindicengye/index.json";
+    public static final String CCTV = PANDAURL + "shipinliebieye/cctvshipindicengye/index.json";
 
     public static final String PANDACULTURE = "http://www.ipanda.com/kehuduan/xmwh/index.json";
 
 
     //互动集合
-    public static final String HDJH = PANDAURL+"PAGE14501767715521482/index.json";
+    public static final String HDJH = PANDAURL + "PAGE14501767715521482/index.json";
     //版本跟新
     public static final String UPDATE_URL = "http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
 
-    public static final String LOGIN_URL="https://reg.cntv.cn/login/login.action";
+    public static final String LOGIN_URL = "https://reg.cntv.cn/login/login.action";
 
     //获取边看边聊列表
     //String app,String itemid,String nature,String page
@@ -71,9 +70,9 @@ public class Urls {
     public static final String VADIOPATH = "http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
 
     //注册
-    public static final String REGISTER_URL="https://reg.cntv.cn/api/register.action";
+    public static final String REGISTER_URL = "https://reg.cntv.cn/api/register.action";
 
-//登陆
+    //登陆
     public static final String LoginUrl = "https://reg.cntv.cn/login/login.action";
 
     //获取手机验证码
@@ -88,4 +87,6 @@ public class Urls {
     //邮箱注册url
     public static final String EMILEREGIS = "https://reg.cntv.cn/api/register.action";
 
+    // 精彩一刻
+    public static final String JCYI = " http://api.cntv.cn/video/videolistById";
 }
