@@ -111,6 +111,7 @@ public class MainActivity extends BaseActivity {
 
 
 
+
     private void showTitle(String title, int type) {
         if (type == HOMETYPE) {
             iconImg.setVisibility(View.VISIBLE);
