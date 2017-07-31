@@ -41,6 +41,7 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
     private LiveContract.Presenter presenter;
     private int Index = 1;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_duoshijiao;
