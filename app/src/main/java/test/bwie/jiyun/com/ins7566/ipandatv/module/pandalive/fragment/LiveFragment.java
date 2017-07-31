@@ -67,9 +67,8 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
 
     @Override
     protected void loadData() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD)
             manager = App.activity.getSupportFragmentManager();
-        }
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.direct_framelayout, new PandaLivedsjtalkFragment());
         transaction.commit();
