@@ -10,7 +10,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.App;
 
 
 public class ToastManger {
-    public static void show(String msg){
-       Toast.makeText(App.context,msg,Toast.LENGTH_SHORT);
+    public static void show(String msg) {
+        Toast.makeText(App.context, msg, Toast.LENGTH_SHORT);
     }
 }
