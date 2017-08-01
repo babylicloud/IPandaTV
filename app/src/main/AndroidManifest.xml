@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="test.bwie.jiyun.com.ins7566.ipandatv">
-<uses-permission android:name="android.permission.INTERNET"/>
+    package="test.bwie.jiyun.com.ins7566.ipandatv">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -9,11 +20,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.SplashAActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".module.home.hudong.HudongActivity"></activity>
@@ -23,23 +34,55 @@
         <activity android:name=".module.home.gerenzhongxin.zhuce.Title_RegisterActivity"></activity>
         <activity android:name=".module.home.gerenzhongxin.Person_InfoActivity"></activity>
         <activity android:name=".module.home.gerenzhongxin.PersonAmendActivity"></activity>
+        <activity android:name=".module.pandaculture.fragment.RollDtialActivity" />
+        <activity android:name=".activity.YindaoActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.VedioActivity" />
 
-        <activity android:name=".activity.YindaoActivity"/>
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.VedioActivity"/>
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="597ecb4307fe656e79001ab7">
-        </meta-data>
+            android:value="597ecb4307fe656e79001ab7"></meta-data>
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
-            android:value="77be44e1daa64364ade354c54c97ab47">
-        </meta-data>
+            android:value="77be44e1daa64364ade354c54c97ab47"></meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Channel ID" >
-        </meta-data>
+            android:value="Channel ID"></meta-data>
 
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+
+        <activity
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
     </application>
-
 </manifest>

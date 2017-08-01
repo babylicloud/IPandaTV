@@ -3,6 +3,7 @@ package test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.contract;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BasePresenter;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseView;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaCultureBean;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaCultureVedioBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaTebieBean;
 
 /**
@@ -16,6 +17,8 @@ public interface CultureContract {
 
         //展示第一条数据
         void ShowFirst(PandaTebieBean pandaTebieBean);
+
+        void showVideo(PandaCultureVedioBean pandaCultureVedioBean);
 
         //返回信息
         void ShowMsg(String msg);

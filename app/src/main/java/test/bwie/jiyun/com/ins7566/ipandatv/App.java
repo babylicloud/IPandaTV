@@ -7,6 +7,8 @@ import android.widget.RadioGroup;
 
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
@@ -20,6 +22,13 @@ public class App extends Application {
     public static BaseFragment lastFragment;
     public static Context context;
     public static RadioGroup mRadiogroup;
+
+    {
+
+        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
+    }
 
     @Override
     public void onCreate() {
@@ -39,5 +48,6 @@ public class App extends Application {
 
             }
         });
+        UMShareAPI.get(this);
     }
 }

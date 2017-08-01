@@ -13,6 +13,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.adapter.PandaDirectAdapter;
@@ -20,19 +21,17 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveJCYKB
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.contract.PandaLiveContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.presenter.PandaLivePresenter;
 
-
 /**
  * Created by lx on 2017/7/29.
  * 直播页面 显示的第一个页面
  */
 
 public class PandadirectFragment extends BaseFragment implements PandaLiveContract.View {
-
-
     @BindView(R.id.direct_tablayout)
     TabLayout directTablayout;
     @BindView(R.id.direct_viewpager)
     ViewPager directViewpager;
+    Unbinder unbinder;
     private PandaDirectAdapter adapter;
     private List<String> mListName;
     private List<BaseFragment> mList;
@@ -97,7 +96,6 @@ public class PandadirectFragment extends BaseFragment implements PandaLiveContra
         directViewpager.setAdapter(adapter);
         directTablayout.setupWithViewPager(directViewpager);
     }
-
 
     @Override
     public void setPresenter(PandaLiveContract.Presenter presenter) {

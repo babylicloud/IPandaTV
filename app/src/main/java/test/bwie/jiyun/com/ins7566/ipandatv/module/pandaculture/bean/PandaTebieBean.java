@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by INS7566 on 2017/7/18.
+ * Created by lx on 2017/7/30.
  */
 
 public class PandaTebieBean implements Serializable {

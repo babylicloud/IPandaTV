@@ -27,6 +27,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.adapter.HomeViewPagerAdapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.adapter.PandaCultureItemAdapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaCultureBean;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaCultureVedioBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaTebieBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.contract.CultureContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.presenter.CulturePresenter;
@@ -112,6 +113,11 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
     @Override
     public void ShowFirst(PandaTebieBean pandaTebieBean) {
+
+    }
+
+    @Override
+    public void showVideo(PandaCultureVedioBean pandaCultureVedioBean) {
 
     }
 

@@ -47,8 +47,6 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
     private LiveContract.Presenter presenter;
     private int Index = 1;
 
-    private PandaAnglePresenter presente;
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_duoshijiao;
@@ -103,7 +101,7 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
 
     @Override
     protected void loadData() {
-        presente = new PandaAnglePresenter(this);
+        new PandaAnglePresenter(this);
         presenter.start();
     }
 
