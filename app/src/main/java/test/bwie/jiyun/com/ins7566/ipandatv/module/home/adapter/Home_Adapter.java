@@ -29,7 +29,16 @@ public class Home_Adapter extends RecyclerView.Adapter {
     private Context context;
     public static final int TYPE1 = 1, TYPE2 = 2, TYPE3 = 3, TYPE4 = 4, TYPE5 = 5;
     public View view, view1, view2, view3, view4;
-    private setOnClick onClick;
+    private static OnClick onClick;
+
+    public interface OnClick {
+        void setTYPE1(View view, HomePageBean.DataBean.PandaeyeBean pandaeyeBean);
+        void setTYPE2(View view, HomePageBean.DataBean.PandaeyeBean pandaeyeBean);
+        void setTYPE3(View view,HomePageBean.DataBean.PandaliveBean listBean,int position);
+        void setTYPE4(View view,HomePageBean.DataBean.AreaBean areaBean,int position);
+        void setTYPE5(View view,HomePageBean.DataBean.WallliveBean wallliveBean,int position);
+        void setTYPE6(View view,HomePageBean.DataBean.ChinaliveBean chinaliveBean,int position);
+    }
 
     public Home_Adapter(Context context, List<Object> mlist) {
         this.mlist = mlist;
@@ -37,7 +46,7 @@ public class Home_Adapter extends RecyclerView.Adapter {
         this.context = context;
     }
 
-    public void setOnClick(setOnClick onClick) {
+    public void setOnClick(OnClick onClick) {
         this.onClick = onClick;
     }
 
@@ -146,23 +155,16 @@ public class Home_Adapter extends RecyclerView.Adapter {
             t1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent in = new Intent(App.activity, VideoActivity.class);
-//                    in.putExtra("url", "");
-//                    in.putExtra("pid", pandaeyeBean.getItems().get(0).getPid());
-//                    in.putExtra("title", pandaeyeBean.getItems().get(0).getTitle());
-//                    context.startActivity(in);
-                    onClick.setTYPE1(v);
+//
+                    onClick.setTYPE1(v,pandaeyeBean);
 
                 }
             });
             t2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent in = new Intent(App.activity, VideoActivity.class);
-//                    in.putExtra("pid", pandaeyeBean.getItems().get(1).getPid());
-//                    in.putExtra("title", pandaeyeBean.getItems().get(1).getTitle());
-//                    context.startActivity(in);
-                    onClick.setTYPE2(v);
+
+                    onClick.setTYPE2(v,pandaeyeBean);
                 }
             });
         }
@@ -183,12 +185,8 @@ public class Home_Adapter extends RecyclerView.Adapter {
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Intent in = new Intent(App.activity, VideoActivity.class);
-//                    in.putExtra("pid", listBean.getList().get(position).getVid());
-//                    in.putExtra("title", listBean.getList().get(position).getTitle());
-//                    context.startActivity(in);
 
-                    onClick.setTYPE3(view);
+                    onClick.setTYPE3(view,listBean,position);
 
                 }
             });
@@ -210,13 +208,9 @@ public class Home_Adapter extends RecyclerView.Adapter {
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Intent in = new Intent(App.activity, VideoActivity.class);
-//                    in.putExtra("pid", areaBean.getListscroll().get(position).getPid());
-//                    in.putExtra("title", areaBean.getListscroll().get(position).getTitle());
-//                    in.putExtra("image", areaBean.getListscroll().get(position).getImage());
-//                    context.startActivity(in);
+//
 
-                    onClick.setTYPE4(view);
+                    onClick.setTYPE4(view,areaBean,position);
                 }
             });
        }
@@ -237,12 +231,9 @@ public class Home_Adapter extends RecyclerView.Adapter {
             home_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Intent in = new Intent(App.activity, VideoActivity.class);
-//                    in.putExtra("pid", wallliveBean.getList().get(position).getVid());
-//                    in.putExtra("title", wallliveBean.getList().get(position).getTitle());
-//                    context.startActivity(in);
+//
 
-                    onClick.setTYPE5(view);
+                    onClick.setTYPE5(view,wallliveBean,position);
                 }
             });
         }
@@ -263,11 +254,8 @@ public class Home_Adapter extends RecyclerView.Adapter {
             home_GridView_China.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Intent in = new Intent(App.activity, VideoActivity.class);
-//                    in.putExtra("pid", chinaliveBean.getList().get(position).getVid());
-//                    in.putExtra("title", chinaliveBean.getList().get(position).getTitle());
-//                    context.startActivity(in);
-                    onClick.setTYPE6(view);
+//
+                    onClick.setTYPE6(view,chinaliveBean,position);
 
 
                 }

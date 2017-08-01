@@ -1,5 +1,6 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,24 +22,24 @@ import java.util.List;
 
 import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
+import test.bwie.jiyun.com.ins7566.ipandatv.activity.VedioActivity;
+import test.bwie.jiyun.com.ins7566.ipandatv.activity.WebActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.HomeViewPagerAdapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.Home_Adapter;
-import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.setOnClick;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.setViewPagerListener;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.HomePageBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
+
+import static test.bwie.jiyun.com.ins7566.ipandatv.App.context;
 
 /**
  * Created by INS7566 on 2017/7/28.
  */
 
-public class HomeFragment extends BaseFragment implements HomeContract.View ,ViewPager.OnPageChangeListener{
-
-
-
-   private PullToRefreshRecyclerView PulltoRefresh;
-    private View view1,v;
+public class HomeFragment extends BaseFragment implements HomeContract.View, ViewPager.OnPageChangeListener {
+    private PullToRefreshRecyclerView PulltoRefresh;
+    private View view1, v;
     private LinearLayout linearLayout;
     private ViewPager mViewPager;
     private List<CheckBox> checkBoxes = new ArrayList<>();
@@ -47,6 +48,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
     private HomeContract.Presenter presenter;
     private Home_Adapter homeAdapter;
     private List<Object> mList = new ArrayList<>();
+
     @Override
     protected int getLayoutId() {
         return R.layout.main_headpage;
@@ -55,8 +57,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
 
     @Override
     protected void init(View view) {
-    PulltoRefresh = (PullToRefreshRecyclerView) view.findViewById(R.id.PulltoRefresh);
-        view1 = LayoutInflater.from(getContext()).inflate(R.layout.home_viewpager_main,null);
+        PulltoRefresh = (PullToRefreshRecyclerView) view.findViewById(R.id.PulltoRefresh);
+        view1 = LayoutInflater.from(getContext()).inflate(R.layout.home_viewpager_main, null);
         linearLayout = (LinearLayout) view1.findViewById(R.id.home_viewpager_linearLayout);
         mViewPager = (ViewPager) view1.findViewById(R.id.home_viewpager);
         mViewPager.setOnPageChangeListener(this);
@@ -76,7 +78,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
 
 //                        presenter.start();
                     }
-                },200);
+                }, 200);
             }
 
             @Override
@@ -87,7 +89,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
                         PulltoRefresh.setLoadMoreComplete();
 //                        presenter.start();
                     }
-                },200);
+                }, 200);
             }
         });
         mViewPager.setFocusable(true);
@@ -96,7 +98,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
 
         homeAdapter = new Home_Adapter(App.activity, mList);
         PulltoRefresh.setAdapter(homeAdapter);
-        homeAdapter.notifyDataSetChanged();
+//        homeAdapter.notifyDataSetChanged();
 
     }
 
@@ -105,53 +107,61 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
         new HomePresenter(this);
         presenter.start();
 
-        homeAdapter.setOnClick(new setOnClick() {
-            @Override
-            public void setTYPE1(View view) {
 
+        homeAdapter.setOnClick(new Home_Adapter.OnClick() {
+            @Override
+            public void setTYPE1(View view, HomePageBean.DataBean.PandaeyeBean pandaeyeBean) {
+                Intent in = new Intent(App.activity, VedioActivity.class);
+                    in.putExtra("url", "");
+                    in.putExtra("pid", pandaeyeBean.getItems().get(0).getPid());
+                    in.putExtra("title", pandaeyeBean.getItems().get(0).getTitle());
+                    context.startActivity(in);
             }
 
             @Override
-            public void setTYPE2(View view) {
-
+            public void setTYPE2(View view, HomePageBean.DataBean.PandaeyeBean pandaeyeBean) {
+                Intent in = new Intent(App.activity, VedioActivity.class);
+                    in.putExtra("pid", pandaeyeBean.getItems().get(1).getPid());
+                    in.putExtra("title", pandaeyeBean.getItems().get(1).getTitle());
+                    context.startActivity(in);
             }
 
             @Override
-            public void setTYPE3(View view) {
+            public void setTYPE3(View view, HomePageBean.DataBean.PandaliveBean listBean, int position) {
 
+                Intent in = new Intent(App.activity, VedioActivity.class);
+                    in.putExtra("pid", listBean.getList().get(position).getVid());
+                    in.putExtra("title", listBean.getList().get(position).getTitle());
+                    context.startActivity(in);
             }
 
             @Override
-            public void setTYPE4(View view) {
-
+            public void setTYPE4(View view, HomePageBean.DataBean.AreaBean areaBean, int position) {
+                Intent in = new Intent(getContext(), VedioActivity.class);
+                    in.putExtra("pid", areaBean.getListscroll().get(position).getPid());
+                    in.putExtra("title", areaBean.getListscroll().get(position).getTitle());
+                    in.putExtra("image", areaBean.getListscroll().get(position).getImage());
+                    getContext().startActivity(in);
             }
 
             @Override
-            public void setTYPE5(View view) {
-
+            public void setTYPE5(View view, HomePageBean.DataBean.WallliveBean wallliveBean, int position) {
             }
-
             @Override
-            public void setTYPE6(View view) {
-
+            public void setTYPE6(View view, HomePageBean.DataBean.ChinaliveBean chinaliveBean, int position) {
             }
         });
 
     }
+
 
     @Override
     public void setParams(Bundle bundle) {
 
     }
 
-
-
-
-
-
     @Override
     public void setImage(HomePageBean homePageBean) {
-
         List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = homePageBean.getData().getBigImg();
         showLunBo(bigImgBeanList);
 
@@ -165,7 +175,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
         homeAdapter = new Home_Adapter(App.activity, mList);
         PulltoRefresh.setAdapter(homeAdapter);
         homeAdapter.notifyDataSetChanged();
-
     }
 
     @Override
@@ -195,8 +204,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
         HomePageBean asObject = (HomePageBean) aCache.getAsObject("HomePageBean");
         List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = asObject.getData().getBigImg();
         showLunBo(bigImgBeanList);
-
-
         mList = new ArrayList<>();
         HomePageBean.DataBean data = asObject.getData();
         mList.add(data.getPandaeye());
@@ -222,7 +229,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
 
     @Override
     public void onPageSelected(int position) {
-
+        currmentNum = position;
+        for (int i = 0; i < checkBoxes.size(); i++) {
+            if (i == currmentNum % checkBoxes.size()) {
+                checkBoxes.get(i).setChecked(true);
+            } else {
+                checkBoxes.get(i).setChecked(false);
+            }
+        }
     }
 
     @Override
@@ -250,7 +264,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
             title.setText(titlestr);
             Pagerview.add(v);
         }
-
         HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(Pagerview);
         mViewPager.setAdapter(adapter);
         checkBoxes.get(currmentNum % checkBoxes.size()).setChecked(true);
@@ -263,17 +276,18 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
                 if (position == 0) {
                     String pid = bigImgBean.getPid();
                     String title = bigImgBean.getTitle();
-//                    Intent in = new Intent(App.activity, BobaoActivity.class);
-//                    in.putExtra("pid", pid);
-//                    in.putExtra("title", title);
-//                    startActivity(in);
+                    String url = bigImgBean.getUrl();
+                    Intent in = new Intent(App.activity, WebActivity.class);
+                    in.putExtra("url", url);
+                    in.putExtra("title", title);
+                    startActivity(in);
                 } else {
                     String pid = bigImgBean.getPid();
                     String title = bigImgBean.getTitle();
-//                    Intent in = new Intent(App.activity, VideoActivity.class);
-//                    in.putExtra("pid", pid);
-//                    in.putExtra("title", title);
-//                    startActivity(in);
+                    Intent in = new Intent(App.activity, VedioActivity.class);
+                    in.putExtra("pid", pid);
+                    in.putExtra("title", title);
+                    startActivity(in);
                 }
             }
         });
@@ -299,8 +313,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View ,Vie
             }
         }
     };
-
-
 
 
 }
