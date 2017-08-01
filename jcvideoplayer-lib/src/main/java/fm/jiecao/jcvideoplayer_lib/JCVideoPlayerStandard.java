@@ -158,7 +158,7 @@ private Context mContext;
                 });
                 popupWindow.setOutsideTouchable(true);
                 popupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(200,200,200,200)));
-                popupWindow.showAtLocation(btn,Gravity.BOTTOM,380,120);
+                popupWindow.showAtLocation(btn,Gravity.BOTTOM,300,120);
             }
         });
 
@@ -183,6 +183,7 @@ private Context mContext;
             }
         });
     }
+
 
 
 

@@ -202,8 +202,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
         ACache aCache = ACache.get(getContext());
         HomePageBean asObject = (HomePageBean) aCache.getAsObject("HomePageBean");
+
         List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = asObject.getData().getBigImg();
         showLunBo(bigImgBeanList);
+
         mList = new ArrayList<>();
         HomePageBean.DataBean data = asObject.getData();
         mList.add(data.getPandaeye());

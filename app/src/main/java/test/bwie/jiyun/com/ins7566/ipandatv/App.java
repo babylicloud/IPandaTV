@@ -7,6 +7,7 @@ import android.widget.RadioGroup;
 
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
+import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
@@ -24,15 +25,16 @@ public class App extends Application {
     public static RadioGroup mRadiogroup;
 
     {
-
         PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
-        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
+        PlatformConfig.setSinaWeibo("629348515", "846d07e6c06496625cf0ae0ced36021d", "https://api.weibo.com/oauth2/default.html");
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        Config.DEBUG = true;
+        UMShareAPI.get(this);
         PushAgent mPushAgent = PushAgent.getInstance(this);
         //注册推送服务，每次调用register方法都会回调该接口
         mPushAgent.register(new IUmengRegisterCallback() {
@@ -48,6 +50,7 @@ public class App extends Application {
 
             }
         });
-        UMShareAPI.get(this);
+//        CrashHandler.getInstance().init(this);//初始化全局异常管理
     }
+
 }
