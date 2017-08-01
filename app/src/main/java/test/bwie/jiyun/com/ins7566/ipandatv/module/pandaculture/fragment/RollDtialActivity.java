@@ -85,7 +85,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         pid = intent.getStringExtra("pid");
         title = intent.getStringExtra("title");
         urllisst = new ArrayList<>();
-
         //标准基础上改进的视频播放(添加了分享按钮)
         customVideoplayerStandardWithShareButton = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
         LinearLayoutManager layoutManager = new LinearLayoutManager(App.context);
@@ -101,7 +100,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
                 presenter.setVideoURl(mlist.get(postion).getVid());
 
-//                Toast.makeText(RollDtialActivity.this, "dsfsdfs", Toast.LENGTH_SHORT).show();
                 pos = postion;
 
             }
@@ -188,8 +186,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 //                showPopupWindow();
                 break;
             case R.id.live_isshow:
-
-
                 if (ischeck == false) {
                     visibilityLinear.setVisibility(View.VISIBLE);
                     ischeck = true;
@@ -198,7 +194,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
                     visibilityLinear.setVisibility(View.GONE);
                     ischeck = false;
                     return;
-
                 }
 
 

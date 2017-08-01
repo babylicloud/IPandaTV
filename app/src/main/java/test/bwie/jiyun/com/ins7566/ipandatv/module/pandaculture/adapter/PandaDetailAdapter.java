@@ -32,14 +32,14 @@ public class PandaDetailAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.fragment_panda_culture_item,null);
-        MyViewHolder holder=new MyViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.fragment_panda_culture_item, null);
+        MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder viewHolder= (MyViewHolder) holder;
+        MyViewHolder viewHolder = (MyViewHolder) holder;
         viewHolder.title.setText(list.get(position).getT());
         viewHolder.time.setText(list.get(position).getPtime());
         Glide.with(context).load(list.get(position).getImg()).into(viewHolder.image);
@@ -50,31 +50,32 @@ public class PandaDetailAdapter extends RecyclerView.Adapter {
         return list.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView title,time;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView title, time;
         ImageView image;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            title= (TextView) itemView.findViewById(R.id.panda_culture_item_title);
-            time= (TextView) itemView.findViewById(R.id.panda_oculture_item_sp_time);
-            image= (ImageView) itemView.findViewById(R.id.panda_culture_item_image);
+            title = (TextView) itemView.findViewById(R.id.panda_culture_item_title);
+            time = (TextView) itemView.findViewById(R.id.panda_oculture_item_sp_time);
+            image = (ImageView) itemView.findViewById(R.id.panda_culture_item_image);
             image.setScaleType(ImageView.ScaleType.CENTER_CROP);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    msetonclick.mSetOnClick(v,getAdapterPosition());
-                    Log.e("postion",getPosition()+"");
+                    msetonclick.mSetOnClick(v, getAdapterPosition());
+                    Log.e("postion", getPosition() + "");
                 }
             });
         }
     }
-    public interface setOnClick{
+
+    public interface setOnClick {
         void mSetOnClick(View v, int postion);
     }
-    public void setOnClick(setOnClick msetonclick){
-        this.msetonclick=msetonclick;
+
+    public void setOnClick(setOnClick msetonclick) {
+        this.msetonclick = msetonclick;
 
     }
 

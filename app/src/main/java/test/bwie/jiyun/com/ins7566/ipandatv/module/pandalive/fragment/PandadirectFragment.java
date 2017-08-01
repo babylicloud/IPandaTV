@@ -72,7 +72,6 @@ public class PandadirectFragment extends BaseFragment implements PandaLiveContra
         unbinder.unbind();
     }
 
-
     @Override
     public void showLiveFragment(PandaLiveJCYKBean pandaLiveJCYKBean) {
         mListName = new ArrayList<>();
@@ -82,7 +81,6 @@ public class PandadirectFragment extends BaseFragment implements PandaLiveContra
         Bundle bundle = null;
         mListName.add("直播");
         mList.add(new LiveFragment());
-
         for (int i = 1; i < tablist.size(); i++) {
             PandaLiveJCYKBean.TablistBean tablistBean = tablist.get(i);
             pandaJCYKFragment = new PandaAmazingFragment();
