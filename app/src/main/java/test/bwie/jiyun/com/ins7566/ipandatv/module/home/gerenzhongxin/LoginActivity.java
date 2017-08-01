@@ -1,5 +1,6 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.module.home.gerenzhongxin;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.utils.SocializeUtils;
+
+import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,7 +59,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
     private String usrid;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
+    private ProgressDialog dialog;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_login;
@@ -58,7 +67,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
 
     @Override
     protected void initView() {
-
+        dialog = new ProgressDialog(this);
     }
 
     @Override
@@ -79,11 +88,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
         ButterKnife.bind(this);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
-//    }
+
 
 
 
@@ -97,8 +102,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
 
                 break;
             case R.id.Login_QQ:
+                UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.QQ, authListener);
                 break;
             case R.id.Login_WeiBo:
+                UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.SINA, authListener);
+
                 break;
             case R.id.loginBtn:
                 String userName = editUserName.getText().toString().trim();
@@ -108,8 +116,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
                 } else {
                     presenter.Login(userName, passWard);
                 }
-//                finish()
-
 
                 break;
             case R.id.Login_Register:
@@ -122,6 +128,49 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
         }
     }
 
+    UMAuthListener authListener = new UMAuthListener() {
+
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            SocializeUtils.safeShowDialog(dialog);
+        }
+
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(LoginActivity.this, "成功了" + data, Toast.LENGTH_LONG).show();
+            Set<String> keySet = data.keySet();
+            String s;
+            for (String key : keySet) {
+                s = data.get(key);
+                MyLog.e("===========", s);
+            }
+//            、、15901144745
+            String name = data.get("name");
+            Intent in = getIntent();
+            in.putExtra("name", name);
+            setResult(10, in);
+            finish();
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(LoginActivity.this, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(LoginActivity.this, "取消授权", Toast.LENGTH_LONG).show();
+        }
+    };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
     @Override
     public void LoginOclick(LoginBean loginBean) {
         MyLog.e("TAG", loginBean.getErrMsg());
