@@ -50,7 +50,7 @@ public class App extends Application {
 
             }
         });
-
+//        CrashHandler.getInstance().init(this);//初始化全局异常管理
     }
 
 }

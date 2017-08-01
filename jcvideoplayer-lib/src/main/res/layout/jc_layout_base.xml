@@ -4,13 +4,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/_no_img">
 
-    <FrameLayout
-        android:id="@+id/surface_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
-
     <LinearLayout
         android:id="@+id/layout_bottom"
         android:layout_width="match_parent"
@@ -55,7 +48,6 @@
             android:id="@+id/fullscreen"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:paddingRight="16dp"
             android:scaleType="center"
             android:src="@drawable/jc_enlarge" />
 
@@ -92,5 +84,15 @@
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
         android:src="@drawable/jc_click_play_selector" />
+
+    <FrameLayout
+        android:id="@+id/surface_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </FrameLayout>
 
 </RelativeLayout>

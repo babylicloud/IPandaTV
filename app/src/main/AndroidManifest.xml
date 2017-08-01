@@ -37,7 +37,9 @@
         <activity android:name=".module.pandaculture.fragment.RollDtialActivity" />
         <activity android:name=".activity.YindaoActivity" />
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.VedioActivity" />
+        <activity android:name=".activity.VedioActivity"
+            android:screenOrientation="landscape"
+            />
 
         <meta-data
             android:name="UMENG_APPKEY"
