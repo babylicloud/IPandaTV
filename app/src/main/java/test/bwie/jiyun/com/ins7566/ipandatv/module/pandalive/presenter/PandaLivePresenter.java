@@ -31,7 +31,7 @@ public class PandaLivePresenter implements PandaLiveContract.Presenter {
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-
+                view.showAcache();
             }
         });
     }

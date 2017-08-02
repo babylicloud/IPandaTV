@@ -26,6 +26,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveDuosh
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveTalkListBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.contract.LiveContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.presenter.PandaLiveAmazingPresenter;
+import test.bwie.jiyun.com.ins7566.ipandatv.utils.ShowDialog;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 /**
@@ -92,6 +93,7 @@ public class PandaAmazingFragment extends BaseFragment implements LiveContract.V
 
     @Override
     protected void loadData() {
+        showProgress();
         new PandaLiveAmazingPresenter(this);
         presenter.start();
         adapter = new PabdaDXBRAdapter(getContext(), mList);
@@ -100,8 +102,6 @@ public class PandaAmazingFragment extends BaseFragment implements LiveContract.V
             String vid = bundle.getString("vid");
             presenter.setVidManager(vid);
         }
-
-
     }
 
     @Override
@@ -130,17 +130,12 @@ public class PandaAmazingFragment extends BaseFragment implements LiveContract.V
     public void showJcykFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
         mList.addAll(pandaDangxiongburangBean.getVideo());
         adapter.notifyDataSetChanged();
+        dismissProgress();
     }
 
     @Override
     public void showMessage(String msg) {
-        ACache aCache = ACache.get(getContext());
-        PandaDangxiongburangBean pandaChaomenggunxiuObject =
-                (PandaDangxiongburangBean) aCache.
-                        getAsObject("PandaDangxiongburangBean");
-        mList.addAll(pandaChaomenggunxiuObject.getVideo());
-        adapter.notifyDataSetChanged();
-
+        showAcache();
     }
 
     @Override
@@ -165,17 +160,22 @@ public class PandaAmazingFragment extends BaseFragment implements LiveContract.V
 
     @Override
     public void showProgress() {
-
+        ShowDialog.getInsent().create(App.activity);
     }
 
     @Override
     public void dismissProgress() {
-
+        ShowDialog.getInsent().popuUtilsDismiss();
     }
 
     @Override
     public void showAcache() {
-
+        ACache aCache = ACache.get(getContext());
+        PandaDangxiongburangBean pandaChaomenggunxiuObject =
+                (PandaDangxiongburangBean) aCache.
+                        getAsObject("PandaDangxiongburangBean");
+        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+        adapter.notifyDataSetChanged();
     }
 
     @Override

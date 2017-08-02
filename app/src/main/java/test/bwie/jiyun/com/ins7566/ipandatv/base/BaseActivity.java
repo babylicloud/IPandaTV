@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+
+import com.umeng.message.PushAgent;
+
 import butterknife.ButterKnife;
 import test.bwie.jiyun.com.ins7566.ipandatv.App;
 
@@ -24,7 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView();
         initData();
         loadData();
-
+        PushAgent.getInstance(this).onAppStart();
     }
 private boolean mFlag;
     @Override

@@ -48,10 +48,8 @@ public class PandaLivedsjtalkFragment extends BaseFragment {
         mList = new ArrayList<>();
         mList.add(new PandaLiveDuoshijiaoFragment());
         mList.add(new PandaLiveTalkListFragment());
-
         mListName.add("多视角直播");
         mListName.add("边看边聊");
-
         adapter = new PandaDirectAdapter(getChildFragmentManager(), mListName, mList);
         directViewpager.setAdapter(adapter);
         directTablayout.setupWithViewPager(directViewpager);

@@ -26,6 +26,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveDuosh
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveTalkListBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.contract.LiveContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.presenter.PandaTalkpresenter;
+import test.bwie.jiyun.com.ins7566.ipandatv.utils.ShowDialog;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 /**
@@ -91,6 +92,7 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
 
     @Override
     protected void loadData() {
+        showProgress();
         new PandaTalkpresenter(this);
         presenter.start();
     }
@@ -128,14 +130,12 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
     public void showeyeFragment(PandaLiveTalkListBean pandaLiveTalkListBean) {
         mList.addAll(pandaLiveTalkListBean.getData().getContent());
         adapter.notifyDataSetChanged();
+        dismissProgress();
     }
 
     @Override
     public void showMessage(String msg) {
-        ACache aCache = ACache.get(getContext());
-        PandaLiveTalkListBean aCacheAsObject = (PandaLiveTalkListBean) aCache.getAsObject("PandaLiveTalkListBean");
-        mList.addAll(aCacheAsObject.getData().getContent());
-        adapter.notifyDataSetChanged();
+        showAcache();
     }
 
     @Override
@@ -151,17 +151,20 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
 
     @Override
     public void showProgress() {
-
+        ShowDialog.getInsent().create(App.activity);
     }
 
     @Override
     public void dismissProgress() {
-
+        ShowDialog.getInsent().popuUtilsDismiss();
     }
 
     @Override
     public void showAcache() {
-
+        ACache aCache = ACache.get(getContext());
+        PandaLiveTalkListBean aCacheAsObject = (PandaLiveTalkListBean) aCache.getAsObject("PandaLiveTalkListBean");
+        mList.addAll(aCacheAsObject.getData().getContent());
+        adapter.notifyDataSetChanged();
     }
 
     @Override

@@ -5,7 +5,6 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import test.bwie.jiyun.com.ins7566.ipandatv.internet.HttpFactory;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.INetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NNetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NetWorkCallback;
@@ -21,7 +20,6 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.UpdateBean;
  */
 
 public class HomeModelimpl implements IHomeModel {
-
 
 
     @Override
@@ -95,9 +93,6 @@ public class HomeModelimpl implements IHomeModel {
 
     @Override
     public void version(INetWorkCallback<UpdateBean> callback) {
-        HttpFactory.create().get(Urls.UPDATE_URL, null, callback);
+        iHttp.DownLoad(Urls.UPDATE_URL, null, callback);
     }
-
-
-
 }

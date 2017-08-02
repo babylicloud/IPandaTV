@@ -29,6 +29,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveDuosh
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveTalkListBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.contract.LiveContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.presenter.PandaAnglePresenter;
+import test.bwie.jiyun.com.ins7566.ipandatv.utils.ShowDialog;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 
@@ -101,6 +102,7 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
 
     @Override
     protected void loadData() {
+        showProgress();
         new PandaAnglePresenter(this);
         presenter.start();
     }
@@ -133,7 +135,7 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
     public void showLiveFragment(PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoBean) {
         mList.addAll(pandaLiveDuoshijiaoBean.getList());
         adapter.notifyDataSetChanged();
-
+        dismissProgress();
     }
 
     @Override
@@ -143,11 +145,7 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
 
     @Override
     public void showMessage(String msg) {
-        ACache aCache = ACache.get(getContext());
-        PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoObject = (PandaLiveDuoshijiaoBean) aCache.getAsObject("PandaLiveDuoshijiaoBean");
-
-        mList.addAll(pandaLiveDuoshijiaoObject.getList());
-        adapter.notifyDataSetChanged();
+        showAcache();
     }
 
     @Override
@@ -164,17 +162,20 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
 
     @Override
     public void showProgress() {
-
+        ShowDialog.getInsent().create(App.activity);
     }
 
     @Override
     public void dismissProgress() {
-
+        ShowDialog.getInsent().popuUtilsDismiss();
     }
 
     @Override
     public void showAcache() {
-
+        ACache aCache = ACache.get(getContext());
+        PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoObject = (PandaLiveDuoshijiaoBean) aCache.getAsObject("PandaLiveDuoshijiaoBean");
+        mList.addAll(pandaLiveDuoshijiaoObject.getList());
+        adapter.notifyDataSetChanged();
     }
 
     @Override

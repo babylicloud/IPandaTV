@@ -82,7 +82,6 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
 
     @OnClick(R.id.live_isshow)
     public void onViewClicked() {
-
         if (ischeck == false) {
             liveLinBrief.setVisibility(View.VISIBLE);
             ischeck = true;
@@ -128,7 +127,6 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
 
     @Override
     public void showProgress() {
-
     }
 
     @Override

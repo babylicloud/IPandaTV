@@ -14,12 +14,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseFragment;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.adapter.PandaDirectAdapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.bean.PandaLiveJCYKBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.contract.PandaLiveContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandalive.presenter.PandaLivePresenter;
+import test.bwie.jiyun.com.ins7566.ipandatv.utils.ShowDialog;
 
 /**
  * Created by lx on 2017/7/29.
@@ -49,6 +51,7 @@ public class PandadirectFragment extends BaseFragment implements PandaLiveContra
 
     @Override
     protected void loadData() {
+        showProgress();
         new PandaLivePresenter(this);
         presenter.start();
     }
@@ -94,6 +97,7 @@ public class PandadirectFragment extends BaseFragment implements PandaLiveContra
         adapter = new PandaDirectAdapter(getChildFragmentManager(), mListName, mList);
         directViewpager.setAdapter(adapter);
         directTablayout.setupWithViewPager(directViewpager);
+        dismissProgress();
     }
 
     @Override
@@ -103,12 +107,12 @@ public class PandadirectFragment extends BaseFragment implements PandaLiveContra
 
     @Override
     public void showProgress() {
-
+        ShowDialog.getInsent().create(App.activity);
     }
 
     @Override
     public void dismissProgress() {
-
+        ShowDialog.getInsent().popuUtilsDismiss();
     }
 
     @Override

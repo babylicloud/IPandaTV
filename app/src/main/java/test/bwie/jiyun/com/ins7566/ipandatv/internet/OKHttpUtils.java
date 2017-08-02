@@ -23,13 +23,14 @@ import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.INetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NNetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NetWorkCallback;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.UpdateBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 /**
  * Created by INS7566 on 2017/7/27.
  */
 
-public class OKHttpUtils implements IHttp{
+public class OKHttpUtils implements IHttp {
 
 
     private OkHttpClient okHttpClient;
@@ -80,10 +81,10 @@ public class OKHttpUtils implements IHttp{
                     @Override
                     public void run() {
                         //执行在主线程
-                        if(e.getMessage()!=null) {
+                        if (e.getMessage() != null) {
                             callback.OnError(404, e.getMessage().toString());
-                        }else{
-                            Log.e("Error","错误 e.getMessage 为空");
+                        } else {
+                            Log.e("Error", "错误 e.getMessage 为空");
                         }
                     }
                 });
@@ -165,7 +166,44 @@ public class OKHttpUtils implements IHttp{
 
     }
 
+    @Override
+    public <T> void DownLoad(String url, Map<String, String> params, final INetWorkCallback<UpdateBean> callback) {
+        FormBody.Builder builder = new FormBody.Builder();
+        if (params != null && params.size() > 0) {
+            Set<String> keys = params.keySet();
+            for (String key : keys) {
+                String value = params.get(key);
+                builder.add(key, value);
+            }
+        }
+        Request request = new Request.Builder().url(url).post(builder.build()).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                App.activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //执行在主线程
+                        callback.OnError(404, e.getMessage().toString());
+                    }
+                });
 
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String jsonData = response.body().string();
+                //执行在子线程中
+                App.activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //执行在主线程
+                        callback.OnSuccess(getGeneric(jsonData, callback));
+                    }
+                });
+            }
+        });
+    }
 
 
     /**
@@ -183,7 +221,7 @@ public class OKHttpUtils implements IHttp{
         Type[] actualTypeArguments = ((ParameterizedType) types[0]).getActualTypeArguments();
         Type type = actualTypeArguments[0];
         T t = gson.fromJson(jsonData, type);
-        ACache aCache=ACache.get(App.activity);
+        ACache aCache = ACache.get(App.activity);
         aCache.put(t.getClass().getSimpleName(), (Serializable) t);
         return t;
     }

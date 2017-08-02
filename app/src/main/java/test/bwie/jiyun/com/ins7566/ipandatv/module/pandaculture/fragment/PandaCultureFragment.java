@@ -31,6 +31,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaCultur
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.bean.PandaTebieBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.contract.CultureContract;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.pandaculture.presenter.CulturePresenter;
+import test.bwie.jiyun.com.ins7566.ipandatv.utils.ShowDialog;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.MyLog;
 
 /**
@@ -81,6 +82,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
     @Override
     protected void loadData() {
+        showProgress();
         new CulturePresenter(this);
         presenter.start();
     }
@@ -133,12 +135,12 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
     @Override
     public void showProgress() {
-
+        ShowDialog.getInsent().create(App.activity);
     }
 
     @Override
     public void dismissProgress() {
-
+        ShowDialog.getInsent().popuUtilsDismiss();
     }
 
     @Override
@@ -219,5 +221,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         checkBoxes.get(currmentNum % checkBoxes.size()).setChecked(true);
         pandaCultureViewPagerView.setCurrentItem(currmentNum);
         handler.sendEmptyMessageDelayed(222, 2000);
+        homeViewPagerAdapter.notifyDataSetChanged();
+        dismissProgress();
     }
 }

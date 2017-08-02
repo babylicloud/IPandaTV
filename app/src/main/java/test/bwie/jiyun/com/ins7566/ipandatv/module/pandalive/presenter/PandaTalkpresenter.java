@@ -38,6 +38,7 @@ public class PandaTalkpresenter implements LiveContract.Presenter {
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
                 liveFragment.showMessage(ErrorMsg);
+                liveFragment.showAcache();
             }
         });
     }

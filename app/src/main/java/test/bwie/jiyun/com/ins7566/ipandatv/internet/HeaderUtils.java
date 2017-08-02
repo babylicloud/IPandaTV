@@ -28,6 +28,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.INetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NNetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NetWorkCallback;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.UpdateBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 /**
@@ -309,6 +310,11 @@ public class HeaderUtils implements IHttp {
                 });
             }
         });
+    }
+
+    @Override
+    public <T> void DownLoad(String url, Map<String, String> params, INetWorkCallback<UpdateBean> callback) {
+
     }
 
     public Drawable byteToDrawable(byte[] buteArray) {

@@ -5,6 +5,7 @@ import java.util.Map;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.INetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NNetWorkCallback;
 import test.bwie.jiyun.com.ins7566.ipandatv.internet.callback.NetWorkCallback;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.UpdateBean;
 
 /**
  * Created by INS7566 on 2017/7/27.
@@ -24,6 +25,6 @@ public interface IHttp {
     <T> void Register(String url, Map<String, String> params, NNetWorkCallback callback);
     //邮箱注册
     <T> void EmailRegister(String url, Map<String, String> params, NNetWorkCallback callback);
-
-
+    //版本更新
+    <T> void DownLoad(String url,Map<String, String> params,INetWorkCallback<UpdateBean> callback);
 }
