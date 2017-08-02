@@ -58,7 +58,6 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_zhibo;
-
     }
 
     @Override
