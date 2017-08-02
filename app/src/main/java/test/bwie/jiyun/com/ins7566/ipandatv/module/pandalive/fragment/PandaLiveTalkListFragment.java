@@ -165,6 +165,7 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
         PandaLiveTalkListBean aCacheAsObject = (PandaLiveTalkListBean) aCache.getAsObject("PandaLiveTalkListBean");
         mList.addAll(aCacheAsObject.getData().getContent());
         adapter.notifyDataSetChanged();
+
     }
 
     @Override
