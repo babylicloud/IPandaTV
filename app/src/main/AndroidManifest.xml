@@ -38,8 +38,8 @@
         <activity android:name=".activity.YindaoActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.VedioActivity"
-            android:screenOrientation="landscape"
-            />
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.WebActivity"></activity>
 
         <meta-data
             android:name="UMENG_APPKEY"

@@ -69,7 +69,11 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     public void loadData() {
-
+        try {
+            number.setText(CleanMessageUtil.getTotalCacheSize(this));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

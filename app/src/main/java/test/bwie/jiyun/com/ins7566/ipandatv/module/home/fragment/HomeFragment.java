@@ -29,6 +29,7 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.HomeViewPagerAda
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.Home_Adapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.setViewPagerListener;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.HomePageBean;
+import test.bwie.jiyun.com.ins7566.ipandatv.view.ShowPopuUtils;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 import static test.bwie.jiyun.com.ins7566.ipandatv.App.context;
@@ -46,6 +47,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     private List<View> Pagerview = new ArrayList<>();
     private int currmentNum = 100000;
     private HomeContract.Presenter presenter;
+
     private Home_Adapter homeAdapter;
     private List<Object> mList = new ArrayList<>();
 
@@ -104,6 +106,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     protected void loadData() {
+        ShowPopuUtils.getInsent().create(App.activity);
         new HomePresenter(this);
         presenter.start();
 
@@ -175,6 +178,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         homeAdapter = new Home_Adapter(App.activity, mList);
         PulltoRefresh.setAdapter(homeAdapter);
         homeAdapter.notifyDataSetChanged();
+        ShowPopuUtils.getInsent().popuUtilsDismiss();
     }
 
     @Override
@@ -216,6 +220,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         homeAdapter = new Home_Adapter(App.activity, mList);
         PulltoRefresh.setAdapter(homeAdapter);
         homeAdapter.notifyDataSetChanged();
+        ShowPopuUtils.getInsent().popuUtilsDismiss();
 
     }
 

@@ -1,9 +1,11 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.module.home.hudong;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.androidkun.PullToRefreshRecyclerView;
@@ -17,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.bwie.jiyun.com.ins7566.ipandatv.App;
 import test.bwie.jiyun.com.ins7566.ipandatv.R;
+import test.bwie.jiyun.com.ins7566.ipandatv.activity.WebActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.base.BaseActivity;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.HudongAdapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.HudongBean;
@@ -88,6 +91,15 @@ public class HudongActivity extends BaseActivity implements HudongContract.View{
         mAdapter = new HudongAdapter(this, mList);
         HudongRecyclerView.setAdapter(mAdapter);
 
+        mAdapter.setOnClick(new HudongAdapter.Onclick() {
+            @Override
+            public void Setonclick(View view, HudongBean.InteractiveBean interactiveBean) {
+                Intent intent=new Intent(HudongActivity.this, WebActivity.class);
+                intent.putExtra("url",interactiveBean.getUrl());
+                startActivity(intent);
+            }
+        });
+
 
 
     }
@@ -99,7 +111,7 @@ public class HudongActivity extends BaseActivity implements HudongContract.View{
 
     @Override
     public void loadData() {
-        HudongPresenter hudongPresenter = new HudongPresenter(this);
+       new HudongPresenter(this);
         presenter.start();
     }
 
