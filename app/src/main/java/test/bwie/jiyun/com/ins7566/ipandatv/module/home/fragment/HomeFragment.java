@@ -1,38 +1,22 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment;
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidkun.PullToRefreshRecyclerView;
 import com.androidkun.callback.PullToRefreshListener;
 import com.bumptech.glide.Glide;
-import com.nostra13.universalimageloader.utils.L;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +29,6 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.HomeViewPagerAda
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.Home_Adapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.setViewPagerListener;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.HomePageBean;
-import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.UpdateBean;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
 
 import static test.bwie.jiyun.com.ins7566.ipandatv.App.context;
@@ -127,6 +110,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     protected void loadData() {
+        ShowPopuUtils.getInsent().create(App.activity);
         new HomePresenter(this);
         presenter.start();
         presenter.version();
@@ -135,42 +119,41 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
             @Override
             public void setTYPE1(View view, HomePageBean.DataBean.PandaeyeBean pandaeyeBean) {
                 Intent in = new Intent(App.activity, VedioActivity.class);
-                in.putExtra("url", "");
-                in.putExtra("pid", pandaeyeBean.getItems().get(0).getPid());
-                in.putExtra("title", pandaeyeBean.getItems().get(0).getTitle());
-                context.startActivity(in);
+                    in.putExtra("url", "");
+                    in.putExtra("pid", pandaeyeBean.getItems().get(0).getPid());
+                    in.putExtra("title", pandaeyeBean.getItems().get(0).getTitle());
+                    context.startActivity(in);
             }
 
             @Override
             public void setTYPE2(View view, HomePageBean.DataBean.PandaeyeBean pandaeyeBean) {
                 Intent in = new Intent(App.activity, VedioActivity.class);
-                in.putExtra("pid", pandaeyeBean.getItems().get(1).getPid());
-                in.putExtra("title", pandaeyeBean.getItems().get(1).getTitle());
-                context.startActivity(in);
+                    in.putExtra("pid", pandaeyeBean.getItems().get(1).getPid());
+                    in.putExtra("title", pandaeyeBean.getItems().get(1).getTitle());
+                    context.startActivity(in);
             }
 
             @Override
             public void setTYPE3(View view, HomePageBean.DataBean.PandaliveBean listBean, int position) {
 
                 Intent in = new Intent(App.activity, VedioActivity.class);
-                in.putExtra("pid", listBean.getList().get(position).getVid());
-                in.putExtra("title", listBean.getList().get(position).getTitle());
-                context.startActivity(in);
+                    in.putExtra("pid", listBean.getList().get(position).getVid());
+                    in.putExtra("title", listBean.getList().get(position).getTitle());
+                    context.startActivity(in);
             }
 
             @Override
             public void setTYPE4(View view, HomePageBean.DataBean.AreaBean areaBean, int position) {
                 Intent in = new Intent(getContext(), VedioActivity.class);
-                in.putExtra("pid", areaBean.getListscroll().get(position).getPid());
-                in.putExtra("title", areaBean.getListscroll().get(position).getTitle());
-                in.putExtra("image", areaBean.getListscroll().get(position).getImage());
-                getContext().startActivity(in);
+                    in.putExtra("pid", areaBean.getListscroll().get(position).getPid());
+                    in.putExtra("title", areaBean.getListscroll().get(position).getTitle());
+                    in.putExtra("image", areaBean.getListscroll().get(position).getImage());
+                    getContext().startActivity(in);
             }
 
             @Override
             public void setTYPE5(View view, HomePageBean.DataBean.WallliveBean wallliveBean, int position) {
             }
-
             @Override
             public void setTYPE6(View view, HomePageBean.DataBean.ChinaliveBean chinaliveBean, int position) {
             }
@@ -205,7 +188,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     public void setMsg(String msg) {
 
     }
-
 
     @Override
     public void setPresenter(HomeContract.Presenter presenter) {
