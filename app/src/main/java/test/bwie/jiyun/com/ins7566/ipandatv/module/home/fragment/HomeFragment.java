@@ -1,10 +1,17 @@
 package test.bwie.jiyun.com.ins7566.ipandatv.module.home.fragment;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +19,19 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidkun.PullToRefreshRecyclerView;
 import com.androidkun.callback.PullToRefreshListener;
 import com.bumptech.glide.Glide;
+import com.nostra13.universalimageloader.utils.L;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +44,10 @@ import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.HomeViewPagerAda
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.Home_Adapter;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.adapter.setViewPagerListener;
 import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.HomePageBean;
+import test.bwie.jiyun.com.ins7566.ipandatv.module.home.bean.UpdateBean;
+import test.bwie.jiyun.com.ins7566.ipandatv.view.ShowPopuUtils;
 import test.bwie.jiyun.com.ins7566.ipandatv.widget.acache.ACache;
+import test.bwie.jiyun.com.ins7566.ipandatv.widget.manger.MyLog;
 
 import static test.bwie.jiyun.com.ins7566.ipandatv.App.context;
 
@@ -418,7 +436,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
                     pd.dismiss(); //结束掉进度条对话框
                 } catch (Exception e) {
                     //下载apk失败
-                    Log.i("abc", "下载失败");
+                    MyLog.e("abc", "下载失败");
 //                    Toast.makeText(getActivity(), "下载新版本失败", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }

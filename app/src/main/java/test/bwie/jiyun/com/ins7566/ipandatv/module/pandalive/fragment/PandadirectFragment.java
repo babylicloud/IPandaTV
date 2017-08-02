@@ -97,6 +97,7 @@ public class PandadirectFragment extends BaseFragment implements PandaLiveContra
         adapter = new PandaDirectAdapter(getChildFragmentManager(), mListName, mList);
         directViewpager.setAdapter(adapter);
         directTablayout.setupWithViewPager(directViewpager);
+        adapter.notifyDataSetChanged();
         dismissProgress();
     }
 
